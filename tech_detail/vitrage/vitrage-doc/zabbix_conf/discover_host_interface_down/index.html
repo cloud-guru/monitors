@@ -201,7 +201,7 @@ service zabbix-agent restart
 
 <ul>
 <li>2.Tại zabbix UI, thêm host : vào Configuration &gt; host &gt; create host
-<img alt="a" src="image/int_host_create.PNG" /></li>
+<img alt="a" src="../../image/int_host_create.PNG" /></li>
 <li>3.Tại Zabbix UI, tạo item của host vửa tạo :</li>
 <li>Type: Zabbix agent </li>
 <li>Key:  net.if.link[*] thay * bằng tên port cần monitor , vd net.if.link[enp4s0f0]</li>
@@ -209,7 +209,7 @@ service zabbix-agent restart
 <li>Show Value: as "Service state" (displays them as "Up/Down")</li>
 <li>
 <p>Application: Network Interfaces
-<img alt="a" src="image/item1.PNG" /></p>
+<img alt="a" src="../../image/item1.PNG" /></p>
 </li>
 <li>
 <p>4.Tạo triger:</p>
@@ -217,7 +217,7 @@ service zabbix-agent restart
 <li>Name: interface down</li>
 <li>Severity: High</li>
 <li>Expression: {controller_port_enp4s0f0:net.if.link[enp4s0f0].last()}=0 với controller_port_enp4s0f0:net.if.link[enp4s0f0] là item thêm ở trên . bật trigger khi giá trị bằng 0
-<img alt="a" src="image/trigger12.PNG" /></li>
+<img alt="a" src="../../image/trigger12.PNG" /></li>
 </ul>
               
             </div>

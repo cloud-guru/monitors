@@ -189,9 +189,9 @@
 <ul>
 <li>1.Tại zabbix UI, thêm host : vào Configuration &gt; host &gt; create host <br/>
 Thông tin cơ bản <br/>
-<img alt="a" src="image/host_switch.PNG" />
+<img alt="a" src="../../image/host_switch.PNG" />
 Thiết lập SNMP_COMMUNITY tại tab Macros
-<img alt="a" src="image/host_macros.PNG" /></li>
+<img alt="a" src="../../image/host_macros.PNG" /></li>
 <li>2.Tạo item của host vửa tạo :</li>
 <li>Type: SNMP2 agent </li>
 <li>Key:  net.if.status[ifOperStatus.*] thay * bằng tên oid port cần monitor , vd net.if.status[ifOperStatus.10121]</li>
@@ -199,7 +199,7 @@ Thiết lập SNMP_COMMUNITY tại tab Macros
 <li>Show Value: IF-MIB::ifOperStatus</li>
 <li>
 <p>Application: Network Interfaces
-<img alt="a" src="image/item2.PNG" /></p>
+<img alt="a" src="../../image/item2.PNG" /></p>
 </li>
 <li>
 <p>4.Tạo trigger:</p>
@@ -209,7 +209,7 @@ Thiết lập SNMP_COMMUNITY tại tab Macros
 <li>Expression: 
   {Interface Gi1-0-21:net.if.status[ifOperStatus.10121].last()}=2 <br/>
 với Interface Gi1-0-21:net.if.status[ifOperStatus.10121] là item thêm ở trên . bật trigger khi giá trị bằng 2
-<img alt="a" src="image/trigger14.PNG" /></li>
+<img alt="a" src="../../image/trigger14.PNG" /></li>
 </ul>
               
             </div>
