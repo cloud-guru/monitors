@@ -191,28 +191,28 @@
                 <p>Với mục đích tổ chức resource, phân tích alarm của vitrage thì chức năng hiển thị ra graph là tính năng quan trọng nhất của vitrage.
 Graph được vitrage hiển thị có thể đưa ra mô hình các thực thể hệ thống, state + relation giữa các thực thể.
 <img alt="kttq" src="../image/graph0.png" /></p>
-<h3 id="1-hoat-ong-tao-graph">1. Hoạt động tạo graph<a class="headerlink" href="#1-hoat-ong-tao-graph" title="Permanent link">┴</a></h3>
+<h3 id="1-hoat-ong-tao-graph">1. Hoạt động tạo graph<a class="headerlink" href="#1-hoat-ong-tao-graph" title="Permanent link">&para;</a></h3>
 <p>2 thành phần đóng góp hoạt động chính trong tạo graph này là vitrage datasouce-driver và vitrage graph.</p>
 <p>Vitrage datasource-driver trách nhiệm :
 - Thu thập thông tin của các service trong hệ thống (nova, neutron, cinder, heat,..), đưa ra được các thực thể (entity) và mối quan hệ (relationships) giữa chúng.<br/>
 Mỗi thực thể có thể là :
-  - một <em>resource</em> : host, volume, stack,... 
+  - một <em>resource</em> : host, volume, stack,&hellip; 
   - một <em>alarm</em> : aodh alarm, zabbix alarm, nagios alarm <br/>
-(alarm hay resoucre được phân biệt bởi thuộc tính "category" của thực thể.)
+(alarm hay resoucre được phân biệt bởi thuộc tính &ldquo;category&rdquo; của thực thể.)
 - Đồng thời cũng nó định nghĩa ra cách chuyển hóa thông tin này về các đổi tượng đỉnh, cạnh và gọi đến <em>vitrage graph</em> để hiển thị</p>
 <p>Mỗi datasouce driver định nghĩa 2 class: Driver Class, Transformer Class
-- Driver Class : Định nghĩa cách lấy thông tin về thực thể: resources (physical, virtual) ; alarms (Aodh, Nagios, Zabbix...) các sự cách thức lấy thông tin
+- Driver Class : Định nghĩa cách lấy thông tin về thực thể: resources (physical, virtual) ; alarms (Aodh, Nagios, Zabbix&hellip;) các sự cách thức lấy thông tin
 - Transformer Class: Định nghĩa cách đưa được thông tin đó vào đồ thị, như:  với mỗi sự kiện cần thêm, sửa xóa các đỉnh, cạnh như thế nào</p>
-<p>Khi khởi tạo graph, datasouce driver gọi "get-all" - lấy về toàn bộ thông tin hệ thống hiện tại. Bằng cách tạo các client gọi đến api của mỗi service (nova, neutron,...) </p>
+<p>Khi khởi tạo graph, datasouce driver gọi &ldquo;get-all&rdquo; - lấy về toàn bộ thông tin hệ thống hiện tại. Bằng cách tạo các client gọi đến api của mỗi service (nova, neutron,&hellip;) </p>
 <p>Defaut cứ 10 phút, diver lại snapshot dữ liệu hiện tại và gọi get-all một lần</p>
 <p>Khi có sự thay đổi trong hệ thống : vd thêm bớt host, có aodh alarm. Vitrage nhận biết bởi 1 trong 2 cách:
 - polling mechanism: gọi đến hàm get_changes - định nghĩa trong Driver Class
-- pushing mechanism: đọc được messeage từ message queue mà service đó gửi lên, topic "vitrage_notifications"
+- pushing mechanism: đọc được messeage từ message queue mà service đó gửi lên, topic &ldquo;vitrage_notifications&rdquo;
 ( chỉ có  static datasouce driver dùng polling - tức sẽ đọc từ thư mục- hoặc trong database; các datasouce khác đều sử dụng pushing mechaism)</p>
 <p>Xem thêm về cách viết 1 datasouce tại : https://github.com/openstack/vitrage/blob/stable/queens/doc/source/contributor/add-new-datasource.rst
 Vitrage graph có trách nhiệm: <br/>
 Kết nối với networkx để trình diễn đồ thị cho người dùng. Đồng thời nó cũng trả lời các truy vẫn đồ thị của khi các thành phần khác hỏi đến (vd vitrage-evaluator gọi khi thực hiện các kịch bản deduce-alarm; rca)</p>
-<h3 id="cac-loai-datasouce">Các loại datasouce:<a class="headerlink" href="#cac-loai-datasouce" title="Permanent link">┴</a></h3>
+<h3 id="cac-loai-datasouce">Các loại datasouce:<a class="headerlink" href="#cac-loai-datasouce" title="Permanent link">&para;</a></h3>
 <ul>
 <li>openstack datasource: aodh, ceilometer, cinder, heat, neutron, nova.</li>
 <li>extenal monitor datasource:  collectd, zabix, nagios, doctor.</li>
@@ -222,8 +222,8 @@ Kết nối với networkx để trình diễn đồ thị cho người dùng. �
 <p>https://github.com/openstack/vitrage/blob/stable/queens/doc/source/contributor/alarm-severity-config.rst</p>
 <p>https://github.com/openstack/vitrage/blob/stable/queens/doc/source/contributor/resource-state-config.rst</p>
 <p>Các <em>openstack datasource</em> thì ta chỉ cần cấu hình oslo messaging notifications vào topic <em>vitrage_notifications</em>; 2 nguồn còn lại thiết đặt có phức tạp hơn được đề cập ở dưới đây.</p>
-<h3 id="cach-cau-hinh-static-datasource">Cách cấu hình static datasource:<a class="headerlink" href="#cach-cau-hinh-static-datasource" title="Permanent link">┴</a></h3>
-<p>Mục đích thêm static datasource là giúp người dùng bổ sung vào đồ thị các thực thể chưa quản lý bởi bất kỳ datasouce nào khác, nó có thể mô tả cho đối tượng  physical, virtual hoặc application vd: switch, route, service,...</p>
+<h3 id="cach-cau-hinh-static-datasource">Cách cấu hình static datasource:<a class="headerlink" href="#cach-cau-hinh-static-datasource" title="Permanent link">&para;</a></h3>
+<p>Mục đích thêm static datasource là giúp người dùng bổ sung vào đồ thị các thực thể chưa quản lý bởi bất kỳ datasouce nào khác, nó có thể mô tả cho đối tượng  physical, virtual hoặc application vd: switch, route, service,&hellip;</p>
 <p>Thêm vào /etc/vitrage/vitrage.conf:</p>
 <pre><code>[static]
 directory = /etc/vitrage/static_datasources/
@@ -259,7 +259,7 @@ definitions:
 <p>Mục definitions: khai báo các thực thể muốn thêm vào:
 - <strong>entities</strong>: danh sách thực thể muốn thêm , trong đó: <br/>
 <strong>static_id</strong>: id dùng trong template, phạm vi nằm trong 1 template, mục đích như tên viết gọn <br/> 
-<strong>type</strong>: kiểu resource, có thể khai báo bất kỳ kiểu nào, có thể là kiểu có sẵn: openstack.cluster, nova.zone, nova.host, nova.instance, cinder.volume, neutron.network, neutron.port, heat.stack ; hay kiểu riêng tùy người dùng, vd port-switch, port-host,... <br/>
+<strong>type</strong>: kiểu resource, có thể khai báo bất kỳ kiểu nào, có thể là kiểu có sẵn: openstack.cluster, nova.zone, nova.host, nova.instance, cinder.volume, neutron.network, neutron.port, heat.stack ; hay kiểu riêng tùy người dùng, vd port-switch, port-host,&hellip; <br/>
 <strong>id</strong>: định danh, id và type cơ bản sẽ là ánh xạ 1 phần tử từ thế giới thực vào graph <br/>
 <strong>name</strong>: tên resource <br/>
 <strong>state</strong>: giá trị tùy chọn, nếu là resource đã có sẵn trong đồ thị ta không cần khai báo vào. Nhưng nếu đây lần đầu resource thêm vào thì buộc phải có, thường để giá trị là active hoặc avalable <br/>
@@ -267,18 +267,18 @@ definitions:
 <strong>source</strong>, <strong>target</strong> :  static id của thực thể nguồn, đích  <br/>
 <strong>relationship_type</strong>: có thể nhận bất kỳ giá trị nào. Thể hiện mối quan hệ 2 thực thể (hay nhãn của cạnh nối 2 đỉnh <br/>
 Tuy nhiên để về sau viết template cho chính xác, relationship_type thường liên quan đến type của source và target. Dưới đây là các quan hệ được quy ước ngầm của các datasoucre sẵn có của vitrage:
-  - 'on'       : aodh (alarm) on nova.instance. <br/>
-  - 'contains' : openstack.cluster contains nova.zone ; nova.zone contains nova.host ; nova.host contains nova.instance ; neutron.network contains neutron.port <br/>
-  - 'attached' : nova.instance attached cinder.volume ; nova.instance attached neutron.port <br/>
-  - 'comprised': heat.stack comprised nova.instance ; heat.stack comprised cinder.volume ; heat.stack comprised neutron.network ; heat.stack comprised neutron.port <br/>
+  - &lsquo;on&rsquo;       : aodh (alarm) on nova.instance. <br/>
+  - &lsquo;contains&rsquo; : openstack.cluster contains nova.zone ; nova.zone contains nova.host ; nova.host contains nova.instance ; neutron.network contains neutron.port <br/>
+  - &lsquo;attached&rsquo; : nova.instance attached cinder.volume ; nova.instance attached neutron.port <br/>
+  - &lsquo;comprised&rsquo;: heat.stack comprised nova.instance ; heat.stack comprised cinder.volume ; heat.stack comprised neutron.network ; heat.stack comprised neutron.port <br/>
 Để mô tả các entity vật lý : hiện có switch, port switch, port host, em có khai báo trong các file static datasource config các type entity:
   - switch     : tương ứng với switch
   - port_switch: port gắn với switch <br/>
   - port_host  : port vật lý gắn với host <br/>
   - port_ovs   : port virtual tạo với ovs <br/>
 Một số relationship_type em đặt tương ứng cho các static entity khi trên: <br/>
-  - 'attached' : port_switch attached switch ; port_host attached nova.host ; port_ovs attached neutron.network <br/>
-  - 'connect'  : port_switch connect port_host ; port_host connect port_ovs <br/>
+  - &lsquo;attached&rsquo; : port_switch attached switch ; port_host attached nova.host ; port_ovs attached neutron.network <br/>
+  - &lsquo;connect&rsquo;  : port_switch connect port_host ; port_host connect port_ovs <br/>
   (việc tách biệt từng loại port như vậy thấy sẽ có lợi tránh nhập nhằng khi viết template sau này)</p>
 <p>Ví dụ add static cho mô hình như hình vẽ đầu bài viết:
 cluster có 2 host, được gắn vào cùng switch trên port enp4s0f0 , đồng thời mỗi port này đều kết nối vitrual port br-provider : 
@@ -287,7 +287,7 @@ Ta cấu static datasource như sau:</p>
 <p>Thêm file <a href="../file/port_host-compute02.yaml">/etc/vitrage/static_datasources/port_host-compute02.yaml</a> : thêm static các port của host 2</p>
 <p>Thêm file <a href="../file/port_switch-01.yaml">/etc/vitrage/static_datasources/port_switch-01.yaml</a> : thêm static các port của switch</p>
 <p>Thêm file <a href="../file/connect_port.yaml">/etc/vitrage/static_datasources/connect_port.yaml</a> : biểu thị mối quan hệ kết nối của các port host vào port switch</p>
-<h3 id="cach-cau-hinh-zabbix-datasouce">Cách cấu hình zabbix datasouce:<a class="headerlink" href="#cach-cau-hinh-zabbix-datasouce" title="Permanent link">┴</a></h3>
+<h3 id="cach-cau-hinh-zabbix-datasouce">Cách cấu hình zabbix datasouce:<a class="headerlink" href="#cach-cau-hinh-zabbix-datasouce" title="Permanent link">&para;</a></h3>
 <p>Mục đích là giúp vitrage có được các thông tin monitor từ các nguồn physical: port, host từ nguồn external datasource (zabbix) mang về</p>
 <p>Cài đặt zabbix : https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-zabbix-to-securely-monitor-remote-servers-on-ubuntu-16-04</p>
 <p>Cấu hình mapping các alarm tại thực thể vật lý của zabbix vào thực thể trên graph:</p>
@@ -304,7 +304,7 @@ Ta cấu static datasource như sau:</p>
 <p>```
 [datasources]
 snapshots_interval = 300</p>
-<h1 id="names-of-supported-plugins-list-value">Names of supported plugins (list value)<a class="headerlink" href="#names-of-supported-plugins-list-value" title="Permanent link">┴</a></h1>
+<h1 id="names-of-supported-plugins-list-value">Names of supported plugins (list value)<a class="headerlink" href="#names-of-supported-plugins-list-value" title="Permanent link">&para;</a></h1>
 <p>types = zabbix,nova.host,nova.instance,nova.zone,static,aodh,cinder.volume,neutron.network,neutron.port,heat.stack</p>
 <p>[zabbix]
 url = http://<ip>/zabbix
@@ -346,8 +346,8 @@ zabbix:
 <ul>
 <li></li>
 </ul>
-<h3 id="mot-so-loi-a-gap">Một số lỗi đã gặp<a class="headerlink" href="#mot-so-loi-a-gap" title="Permanent link">┴</a></h3>
-<h3 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<h3 id="mot-so-loi-a-gap">Một số lỗi đã gặp<a class="headerlink" href="#mot-so-loi-a-gap" title="Permanent link">&para;</a></h3>
+<h3 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">&para;</a></h3>
 <p>https://docs.openstack.org/vitrage/latest/contributor/static-config.html 
 https://docs.openstack.org/vitrage/latest/contributor/add-new-datasource.html
 https://docs.openstack.org/vitrage/latest/contributor/configuration.html</p>

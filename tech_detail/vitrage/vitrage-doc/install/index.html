@@ -188,9 +188,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="huong-dan-cai-at-vitrage">Hướng dẫn cài đặt vitrage:<a class="headerlink" href="#huong-dan-cai-at-vitrage" title="Permanent link">┴</a></h2>
+                <h2 id="huong-dan-cai-at-vitrage">Hướng dẫn cài đặt vitrage:<a class="headerlink" href="#huong-dan-cai-at-vitrage" title="Permanent link">&para;</a></h2>
 <p>Khuyên nên dùng vitrage version &gt; queen.</p>
-<h3 id="cai-tren-devstack">Cài trên devstack:<a class="headerlink" href="#cai-tren-devstack" title="Permanent link">┴</a></h3>
+<h3 id="cai-tren-devstack">Cài trên devstack:<a class="headerlink" href="#cai-tren-devstack" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Tuân theo các hướng dẫn cơ bản tại https://docs.openstack.org/devstack/latest/</p>
@@ -242,8 +242,8 @@ driver = messagingv2
 topics = notifications,vitrage_notifications
 </code></pre>
 
-<h3 id="cai-tren-openstack">Cài trên openstack<a class="headerlink" href="#cai-tren-openstack" title="Permanent link">┴</a></h3>
-<h4 id="chuan-bi-cho-keystone-endpoint-database">chuẩn bị cho keystone-endpoint, database:<a class="headerlink" href="#chuan-bi-cho-keystone-endpoint-database" title="Permanent link">┴</a></h4>
+<h3 id="cai-tren-openstack">Cài trên openstack<a class="headerlink" href="#cai-tren-openstack" title="Permanent link">&para;</a></h3>
+<h4 id="chuan-bi-cho-keystone-endpoint-database">chuẩn bị cho keystone-endpoint, database:<a class="headerlink" href="#chuan-bi-cho-keystone-endpoint-database" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Tại keystone chạy các lệnh để tạo user, serivce, endpoint</li>
 </ul>
@@ -268,7 +268,7 @@ GRANT ALL PRIVILEGES ON vitrage.* TO 'vitrage'@'%' \
   IDENTIFIED BY 'Welcome123';
 </code></pre>
 
-<h4 id="cai-vitrage-core">cài vitrage-core<a class="headerlink" href="#cai-vitrage-core" title="Permanent link">┴</a></h4>
+<h4 id="cai-vitrage-core">cài vitrage-core<a class="headerlink" href="#cai-vitrage-core" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Cài các gói </li>
 </ul>
@@ -337,7 +337,7 @@ topics = notifications,vitrage_notifications
 </code></pre>
 
 <p>( sửa các phần authen cho phù hợp hệ thống cụ thể) </p>
-<h4 id="cai-vitrage-drashboard">cài vitrage-drashboard<a class="headerlink" href="#cai-vitrage-drashboard" title="Permanent link">┴</a></h4>
+<h4 id="cai-vitrage-drashboard">cài vitrage-drashboard<a class="headerlink" href="#cai-vitrage-drashboard" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Cài các gói: </li>
 </ul>
@@ -356,11 +356,11 @@ sudo python /usr/share/openstack-dashboard/manage.py collectstatic --noinput
 sudo service apache2 restart
 </code></pre>
 
-<h4 id="cai-vitrage-cli-client-python_vitrageclient">cài vitrage-cli-client (python_vitrageclient)<a class="headerlink" href="#cai-vitrage-cli-client-python_vitrageclient" title="Permanent link">┴</a></h4>
+<h4 id="cai-vitrage-cli-client-python_vitrageclient">cài vitrage-cli-client (python_vitrageclient)<a class="headerlink" href="#cai-vitrage-cli-client-python_vitrageclient" title="Permanent link">&para;</a></h4>
 <pre><code>pip install python_vitrageclient==2.1.0 
 </code></pre>
 
-<h4 id="thiet-at-cho-cac-serivice-khac">Thiết đặt cho các serivice khác<a class="headerlink" href="#thiet-at-cho-cac-serivice-khac" title="Permanent link">┴</a></h4>
+<h4 id="thiet-at-cho-cac-serivice-khac">Thiết đặt cho các serivice khác<a class="headerlink" href="#thiet-at-cho-cac-serivice-khac" title="Permanent link">&para;</a></h4>
 <p>vitrage lấy thông tin datasouce từ rabbitmq topic . thay đổi trong aodh.conf, nova.conf, neutron.conf, cinder.conf, heat.conf:</p>
 <pre><code>[oslo_messaging_notifications]
 driver = messagingv2
@@ -368,7 +368,7 @@ topics = notifications,vitrage_notifications
 </code></pre>
 
 <p>restart các dịch vụ này</p>
-<h3 id="khoi-chay">Khởi chạy:<a class="headerlink" href="#khoi-chay" title="Permanent link">┴</a></h3>
+<h3 id="khoi-chay">Khởi chạy:<a class="headerlink" href="#khoi-chay" title="Permanent link">&para;</a></h3>
 <p>Tạo database:</p>
 <pre><code>vitrage-dbsync --config-file /etc/vitrage/vitrage.conf
 </code></pre>
@@ -381,13 +381,13 @@ vitrage-notifier --config-file /etc/vitrage/vitrage.conf
 vitrage-persistor --config-file /etc/vitrage/vitrage.conf
 </code></pre>
 
-<h3 id="kiem-tra-hoat-ong-mot-so-lenh-chay">Kiểm tra hoạt động: một số lệnh chạy<a class="headerlink" href="#kiem-tra-hoat-ong-mot-so-lenh-chay" title="Permanent link">┴</a></h3>
+<h3 id="kiem-tra-hoat-ong-mot-so-lenh-chay">Kiểm tra hoạt động: một số lệnh chạy<a class="headerlink" href="#kiem-tra-hoat-ong-mot-so-lenh-chay" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>vitrage alarm list</strong>: show all existing alarm</li>
-<li><strong>vitrage resource list</strong>: show all existing resource of nova, neutron, cinder, aodh,... which you configued</li>
+<li><strong>vitrage resource list</strong>: show all existing resource of nova, neutron, cinder, aodh,&hellip; which you configued</li>
 <li><strong>vitrage resource show <code>&lt;a_specificed_resource_vitrage_ID&gt;</code></strong>: show information about specificed resource</li>
 </ul>
-<h3 id="mot-so-loi-khi-cai-at-a-gap">Một số lỗi khi cài đặt đã gặp:<a class="headerlink" href="#mot-so-loi-khi-cai-at-a-gap" title="Permanent link">┴</a></h3>
+<h3 id="mot-so-loi-khi-cai-at-a-gap">Một số lỗi khi cài đặt đã gặp:<a class="headerlink" href="#mot-so-loi-khi-cai-at-a-gap" title="Permanent link">&para;</a></h3>
 <p>Khi khởi tạo data, gặp lỗi báo:</p>
 <pre><code>DBError: (pymysql.err.InternalError) (1075, u'Incorrect table definition; there can be only one auto column and it must be defined as a key')
 </code></pre>
@@ -395,7 +395,7 @@ vitrage-persistor --config-file /etc/vitrage/vitrage.conf
 <p>Nguyên nhân: kịch bản tạo database của vitrage lỗi. Transaction trong kịch bản này bị từ chối bởi mysql storage engine
 Khắc phục : sửa defaut storage engine từ InnoDB về MyISAM</p>
 <p>https://stackoverflow.com/questions/6479655/how-do-i-set-myisam-as-default-table-handler-in-mysql</p>
-<h3 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<h3 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">&para;</a></h3>
 <p>https://docs.openstack.org/vitrage/latest/install/install-rdo.html#manual</p>
               
             </div>
