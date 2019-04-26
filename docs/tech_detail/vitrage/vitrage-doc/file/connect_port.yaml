@@ -1,0 +1,28 @@
+metadata:
+  name: port of switch connect port of host
+  description: list port of switch
+definitions:
+  entities:
+    - static_id: g-1-0-22
+      type: port
+      id: switch-port-g-1-0-22
+      state: available
+    - static_id: g-1-0-20
+      type: port
+      id: switch-port-g-1-0-20
+      state: available
+    - static_id: compute02-port-enp4s0f0
+      type: port
+      id: compute02-port-enp4s0f0
+      state: available
+    - static_id: controller-port-enp4s0f0
+      type: port
+      id: controller-port-enp4s0f0
+      state: available
+  relationships:
+    - source: g-1-0-22
+      target: compute02-port-enp4s0f0
+      relationship_type: connect
+    - source: g-1-0-20
+      target: controller-port-enp4s0f0
+      relationship_type: connect

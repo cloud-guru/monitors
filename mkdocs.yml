@@ -1,0 +1,44 @@
+site_name: auto_scale_heal
+site_url: https://www.mkdocs.org
+site_description: Project documentation with Markdown.
+site_author: MkDocs Team
+
+repo_url: https://github.com/cloud-monitor/auto_scaling_auto_healing
+edit_uri: ""
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - django
+nav:
+    - Index: index.md
+    - INTRODUCTION:
+        - Issue describe: issue/readme.md
+    - TECHNICAL SOLUTION:
+        - Auto Healing: issue/need_review/auto_healing.md
+    - TECHNOLOGY DETAIL:
+        - vitrage: tech_detail/vitrage/vitrage-doc/architecture.md
+        - mistral: tech_detail/mistral/mistral-doc/readme.md
+        - zabbix: tech_detail/zabbix/zabbix-doc/readme.md
+        - aodh: tech_detail/aodh/aodh-doc/readme.md
+        - ceilometer: tech_detail/ceilometer/ceilometer-doc/readme.md
+        - gnocchi: tech_detail/gnocchi/gnocchi-doc/readme.md
+        - TICK : tech_detail/tick/tick-doc/readme.md
+    - BLUEPRINT:
+        - Propose: issue/propose/readme.md
+        - Start: issue/start/readme.md
+        - In process: issue/in_process/readme.md
+        - Need review: issue/need_review/readme.md
+        - Sloved: issue/sloved/readme.md
+    - ABOUT:
+        - Release Notes: about/release-notes.md
+        - Contributing: about/contributing.md
+        - License: about/license.md
+
+markdown_extensions:
+    - smarty
+    - toc:
+        permalink: True
+    - sane_lists
