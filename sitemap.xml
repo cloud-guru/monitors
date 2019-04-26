@@ -16,7 +16,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.mkdocs.org/tech_detail/vitrage/vitrage-doc/</loc>
+     <loc>https://www.mkdocs.org/tech_detail/vitrage/vitrage-doc/architecture/</loc>
+     <lastmod>2019-04-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.mkdocs.org/tech_detail/vitrage/vitrage-doc/install/</loc>
+     <lastmod>2019-04-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.mkdocs.org/tech_detail/vitrage/vitrage-doc/entity_graph/</loc>
      <lastmod>2019-04-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
