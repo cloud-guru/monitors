@@ -8,7 +8,7 @@
   
   <meta name="author" content="MkDocs Team">
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>architecture - auto_scale_heal</title>
+  <title>vitrage - auto_scale_heal</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
@@ -16,7 +16,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "architecture";
+    var mkdocs_page_name = "vitrage";
     var mkdocs_page_input_path = "tech_detail/vitrage/vitrage-doc/architecture.md";
     var mkdocs_page_url = "/tech_detail/vitrage/vitrage-doc/architecture/";
   </script>
@@ -78,38 +78,30 @@
     <ul class="subnav">
                 <li class=" current">
                     
-    <span class="caption-text">vitrage</span>
-    <ul class="subnav">
-                <li class="toctree-l3 current">
-                    
-    <a class="current" href="./">architecture</a>
+    <a class="current" href="./">vitrage</a>
     <ul class="subnav">
             
-    <li class="toctree-l4"><a href="#i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:</a></li>
+    <li class="toctree-l3"><a href="#i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:</a></li>
     
         <ul>
         
-            <li><a class="toctree-l5" href="#1-khai-niem">1. Khái niệm:</a></li>
+            <li><a class="toctree-l4" href="#1-khai-niem">1. Khái niệm:</a></li>
         
-            <li><a class="toctree-l5" href="#2-kien-truc">2. Kiến trúc:</a></li>
+            <li><a class="toctree-l4" href="#2-kien-truc">2. Kiến trúc:</a></li>
         
-            <li><a class="toctree-l5" href="#3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:</a></li>
+            <li><a class="toctree-l4" href="#3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:</a></li>
         
-            <li><a class="toctree-l5" href="#ref">Ref:</a></li>
+            <li><a class="toctree-l4" href="#referent">Referent:</a></li>
         
         </ul>
     
 
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../install/">install</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../entity_graph/">entity graph function</a>
-                </li>
+    <li class="toctree-l3"><a href="#installation-guide">Installation Guide</a></li>
+    
+
+    <li class="toctree-l3"><a href="#configuration-guide">Configuration Guide</a></li>
+    
+
     </ul>
                 </li>
                 <li class="">
@@ -207,15 +199,11 @@
     
       
         
-          <li>vitrage &raquo;</li>
-        
-      
-        
           <li>TECHNOLOGY DETAIL &raquo;</li>
         
       
     
-    <li>architecture</li>
+    <li>vitrage</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -225,8 +213,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:<a class="headerlink" href="#i-tong-quan-ve-vitrage" title="Permanent link">┴</a></h2>
-<h3 id="1-khai-niem">1. Khái niệm:<a class="headerlink" href="#1-khai-niem" title="Permanent link">┴</a></h3>
+                <h1 id="i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:<a class="headerlink" href="#i-tong-quan-ve-vitrage" title="Permanent link">┴</a></h1>
+<h2 id="1-khai-niem">1. Khái niệm:<a class="headerlink" href="#1-khai-niem" title="Permanent link">┴</a></h2>
 <p>Vitrage - OpenStack RCA (Root Cause Analysis) là dịch vụ giúp tổ chức, phân tích, các alarm, event xảy đến với hệ thống, nhằm làm rõ được những alarm này có nguồn gốc từ đâu và có thể gây ảnh hưởng thế nào.</p>
 <p>Vitrage có các use-case tổng quan:</p>
 <ul>
@@ -238,7 +226,7 @@ Ví dụ:<br/>
 *Bật warning trên vm khi thấy không đủ host để migrate nếu cần.<br/></li>
 <li>Root Cause Indicators: biểu diễn quan hệ nguyên nhân-kết quả giữa các alarm. Vitrage đọc các luật người dùng định nghĩa, xem xem có thể áp dụng luật nào vào trạng thái hiện tại và đưa các liên kết “causual” vào biểu đồ. Giúp cho việc tìm ra nguồn kích hoạt gốc của cho các alarm. </li>
 </ul>
-<h3 id="2-kien-truc">2. Kiến trúc:<a class="headerlink" href="#2-kien-truc" title="Permanent link">┴</a></h3>
+<h2 id="2-kien-truc">2. Kiến trúc:<a class="headerlink" href="#2-kien-truc" title="Permanent link">┴</a></h2>
 <p><img alt="kttq" src="../image/kttq.png" /></p>
 <ul>
 <li>Vitrage bao gồm các thành phần:</li>
@@ -254,7 +242,7 @@ static datasource: đọc thông tin từ các file cấu hình người dùng c
 Theo default khi mới cài đặt, chưa có plugin nào áp dụng.</li>
 <li>Vitrage machine leaning: Thiết kế ra nhằm giúp vitrage có thể: xem xét từ các alarm , deduce-alarm đã xuất hiện, tính rra sự liên quan giữa các alarm, gợi ý cho người dùng viết các template mới.</li>
 </ul>
-<h3 id="3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:<a class="headerlink" href="#3-cac-luong-hoat-ong-co-ban" title="Permanent link">┴</a></h3>
+<h2 id="3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:<a class="headerlink" href="#3-cac-luong-hoat-ong-co-ban" title="Permanent link">┴</a></h2>
 <p><img alt="kttq" src="../image/lhd1.png" /></p>
 <ul>
 <li>Trường hợp thêm một instance mới:<br/></li>
@@ -280,9 +268,13 @@ Alarm về bản chất cũng là 1 entity nên các bước từ 1 đến 5 cũ
 <li>Vitrage Notifier định nghĩa alarm cho aodh - set state “alarm” <br/>
 <img alt="kttq" src="../image/lhd2vd.png" /></li>
 </ul>
-<h3 id="ref">Ref:<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<h2 id="referent">Referent:<a class="headerlink" href="#referent" title="Permanent link">┴</a></h2>
 <p>https://wiki.openstack.org/wiki/Vitrage </p>
 <p>https://docs.openstack.org/vitrage/ocata/vitrage-use-cases.html</p>
+<h1 id="installation-guide">Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">┴</a></h1>
+<p><a href="../install/">install vitrage</a></p>
+<h1 id="configuration-guide">Configuration Guide<a class="headerlink" href="#configuration-guide" title="Permanent link">┴</a></h1>
+<p><a href="../entity_graph/">entity graph</a></p>
               
             </div>
           </div>
@@ -290,7 +282,7 @@ Alarm về bản chất cũng là 1 entity nên các bước từ 1 đến 5 cũ
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../install/" class="btn btn-neutral float-right" title="install">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../../mistral/mistral-doc/readme/" class="btn btn-neutral float-right" title="mistral">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../../../issue/need_review/auto_healing/" class="btn btn-neutral" title="Auto Healing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -324,7 +316,7 @@ Alarm về bản chất cũng là 1 entity nên các bước từ 1 đến 5 cũ
         <span><a href="../../../../issue/need_review/auto_healing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../install/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../../mistral/mistral-doc/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
