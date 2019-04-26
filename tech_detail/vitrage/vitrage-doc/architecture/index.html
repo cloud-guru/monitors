@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
@@ -22,7 +23,9 @@
   </script>
   
   <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script> 
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -81,17 +84,15 @@
     <a class="current" href="./">vitrage</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:</a></li>
+    <li class="toctree-l3"><a href="#tong-quan-ve-vitrage">Tổng quan về Vitrage</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#1-khai-niem">1. Khái niệm:</a></li>
+            <li><a class="toctree-l4" href="#khai-niem">Khái niệm</a></li>
         
-            <li><a class="toctree-l4" href="#2-kien-truc">2. Kiến trúc:</a></li>
+            <li><a class="toctree-l4" href="#kien-truc">Kiến trúc</a></li>
         
-            <li><a class="toctree-l4" href="#3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:</a></li>
-        
-            <li><a class="toctree-l4" href="#referent">Referent:</a></li>
+            <li><a class="toctree-l4" href="#cac-luong-hoat-ong-co-ban">Các luồng hoạt động cơ bản</a></li>
         
         </ul>
     
@@ -100,6 +101,9 @@
     
 
     <li class="toctree-l3"><a href="#configuration-guide">Configuration Guide</a></li>
+    
+
+    <li class="toctree-l3"><a href="#referent">Referent</a></li>
     
 
     </ul>
@@ -213,8 +217,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:<a class="headerlink" href="#i-tong-quan-ve-vitrage" title="Permanent link">┴</a></h1>
-<h2 id="1-khai-niem">1. Khái niệm:<a class="headerlink" href="#1-khai-niem" title="Permanent link">┴</a></h2>
+                <h1 id="tong-quan-ve-vitrage">Tổng quan về Vitrage<a class="headerlink" href="#tong-quan-ve-vitrage" title="Permanent link">┴</a></h1>
+<h2 id="khai-niem">Khái niệm<a class="headerlink" href="#khai-niem" title="Permanent link">┴</a></h2>
 <p>Vitrage - OpenStack RCA (Root Cause Analysis) là dịch vụ giúp tổ chức, phân tích, các alarm, event xảy đến với hệ thống, nhằm làm rõ được những alarm này có nguồn gốc từ đâu và có thể gây ảnh hưởng thế nào.</p>
 <p>Vitrage có các use-case tổng quan:</p>
 <ul>
@@ -226,7 +230,7 @@ Ví dụ:<br/>
 *Bật warning trên vm khi thấy không đủ host để migrate nếu cần.<br/></li>
 <li>Root Cause Indicators: biểu diễn quan hệ nguyên nhân-kết quả giữa các alarm. Vitrage đọc các luật người dùng định nghĩa, xem xem có thể áp dụng luật nào vào trạng thái hiện tại và đưa các liên kết “causual” vào biểu đồ. Giúp cho việc tìm ra nguồn kích hoạt gốc của cho các alarm. </li>
 </ul>
-<h2 id="2-kien-truc">2. Kiến trúc:<a class="headerlink" href="#2-kien-truc" title="Permanent link">┴</a></h2>
+<h2 id="kien-truc">Kiến trúc<a class="headerlink" href="#kien-truc" title="Permanent link">┴</a></h2>
 <p><img alt="kttq" src="../image/kttq.png" /></p>
 <ul>
 <li>Vitrage bao gồm các thành phần:</li>
@@ -242,7 +246,7 @@ static datasource: đọc thông tin từ các file cấu hình người dùng c
 Theo default khi mới cài đặt, chưa có plugin nào áp dụng.</li>
 <li>Vitrage machine leaning: Thiết kế ra nhằm giúp vitrage có thể: xem xét từ các alarm , deduce-alarm đã xuất hiện, tính rra sự liên quan giữa các alarm, gợi ý cho người dùng viết các template mới.</li>
 </ul>
-<h2 id="3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:<a class="headerlink" href="#3-cac-luong-hoat-ong-co-ban" title="Permanent link">┴</a></h2>
+<h2 id="cac-luong-hoat-ong-co-ban">Các luồng hoạt động cơ bản<a class="headerlink" href="#cac-luong-hoat-ong-co-ban" title="Permanent link">┴</a></h2>
 <p><img alt="kttq" src="../image/lhd1.png" /></p>
 <ul>
 <li>Trường hợp thêm một instance mới:<br/></li>
@@ -268,13 +272,13 @@ Alarm về bản chất cũng là 1 entity nên các bước từ 1 đến 5 cũ
 <li>Vitrage Notifier định nghĩa alarm cho aodh - set state “alarm” <br/>
 <img alt="kttq" src="../image/lhd2vd.png" /></li>
 </ul>
-<h2 id="referent">Referent:<a class="headerlink" href="#referent" title="Permanent link">┴</a></h2>
-<p>https://wiki.openstack.org/wiki/Vitrage </p>
-<p>https://docs.openstack.org/vitrage/ocata/vitrage-use-cases.html</p>
 <h1 id="installation-guide">Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">┴</a></h1>
 <p><a href="../install/">install vitrage</a></p>
 <h1 id="configuration-guide">Configuration Guide<a class="headerlink" href="#configuration-guide" title="Permanent link">┴</a></h1>
 <p><a href="../entity_graph/">entity graph</a></p>
+<h1 id="referent">Referent<a class="headerlink" href="#referent" title="Permanent link">┴</a></h1>
+<p>https://wiki.openstack.org/wiki/Vitrage</p>
+<p>https://docs.openstack.org/vitrage/ocata/vitrage-use-cases.html</p>
               
             </div>
           </div>
