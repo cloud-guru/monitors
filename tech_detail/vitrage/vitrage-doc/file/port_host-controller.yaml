@@ -1,0 +1,37 @@
+metadata:
+  name: port of controller
+  description: network of controller host
+definitions:
+  entities:
+    - static_id: br-provider
+      type: port_ovs
+      id: controller-port-br-provider
+      name: controller-port-br-provider
+      state: available
+
+    - static_id: enp4s0f0
+      type: port_host
+      id: controller-port-enp4s0f0
+      name: controller-port-enp4s0f0
+      state: available
+
+    - static_id: h1
+      type: nova.host
+      id: controller
+#      state: available
+
+    - static_id: provider-network
+      type: neutron.network
+      id: 2b0756c1-b74a-4d1f-835c-cc2f66a0bdd3
+      state: active
+
+  relationships:
+    - source: enp4s0f0
+      target: h1
+      relationship_type: attached
+    - source: enp4s0f0
+      target: br-provider
+      relationship_type: connect
+    - source: br-provider
+      target: provider-network
+      relationship_type: attached

@@ -1,0 +1,39 @@
+metadata:
+  name: port of switch
+  description: list port of switch
+definitions:
+  entities:
+    - static_id: switch
+      type: switch
+      id: SWITCH-01
+      name: SWITCH-01
+      state: available
+
+    - static_id: g-1-0-22
+      type: port_switch
+      id: switch-port-g-1-0-22
+      name: switch-port-g-1-0-22
+      state: available
+
+    - static_id: g-1-0-20
+      type: port_switch
+      id: switch-port-g-1-0-20
+      name: switch-port-g-1-0-20
+      state: available
+
+    - static_id: g-1-0-21
+      type: port_switch
+      id: switch-port-g-1-0-21
+      name: switch-port-g-1-0-21
+      state: available
+
+  relationships:
+    - source: g-1-0-22
+      target: switch
+      relationship_type: attached
+    - source: g-1-0-20
+      target: switch
+      relationship_type: attached
+    - source: g-1-0-21
+      target: switch
+      relationship_type: attached

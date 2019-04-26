@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="MkDocs Team">
+  <link rel="shortcut icon" href="../../../../../img/favicon.ico">
+  <title>Config zabbix media - auto_scale_heal</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../css/theme_extra.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Config zabbix media";
+    var mkdocs_page_input_path = "tech_detail/vitrage/vitrage-doc/zabbix_conf/config_zabbix_media.md";
+    var mkdocs_page_url = "/tech_detail/vitrage/vitrage-doc/zabbix_conf/config_zabbix_media/";
+  </script>
+  
+  <script src="../../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../../js/modernizr-2.8.3.min.js" defer></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../../.." class="icon icon-home"> auto_scale_heal</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Introduction</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/readme/">Issue describe</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technical Solution</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/need_review/auto_healing/">Auto Healing</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technology detail</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../">vitrage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../mistral/mistral-doc/readme/">mistral</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../zabbix/zabbix-doc/readme/">zabbix</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../aodh/aodh-doc/readme/">aodh</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../ceilometer/ceilometer-doc/readme/">ceilometer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../gnocchi/gnocchi-doc/readme/">gnocchi</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../tick/tick-doc/readme/">TICK</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Blueprints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/propose/readme/">Propose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/start/readme/">Start</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/in_process/readme/">In process</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/need_review/readme/">Need review</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../../issue/sloved/readme/">Sloved</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../../about/release-notes/">Release Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../..">auto_scale_heal</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Config zabbix media</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="cau-hinh-e-khi-triger-zabbix-bat-len-se-gui-canh-bao-ve-vitrage-gui-vao-rabbitmq">Cấu hình để khi triger zabbix bật lên sẽ gửi cảnh báo về vitrage ( gửi vào rabbitmq)<a class="headerlink" href="#cau-hinh-e-khi-triger-zabbix-bat-len-se-gui-canh-bao-ve-vitrage-gui-vao-rabbitmq" title="Permanent link">┴</a></h3>
+<ul>
+<li>Thêm media type: media mà sẽ thông báo vào messeage queue của openstack , topic vitrage_notification <br/>
+Đây là dạng media sẽ thực hiện chạy script , ta dowload script về , đưa vào thư mục /usr/lib/zabbix/alertscripts/</li>
+</ul>
+<pre><code>$ wget https://raw.githubusercontent.com/openstack/vitrage/master/vitrage/datasources/zabbix/auxiliary/zabbix_vitrage.py
+$ cp zabbix_vitrage.py /usr/lib/zabbix/alertscripts/
+$ chmod 755 /usr/lib/zabbix/alertscripts/zabbix_vitrage.py
+</code></pre>
+
+<ul>
+<li>Từ zabbix ui : [Administration &gt; Media Types &gt; Create Media Type]</li>
+</ul>
+<p>Name: Vitrage Notifications</p>
+<p>Type: Script</p>
+<p>Script name: zabbix_vitrage.py</p>
+<p>Script parameters:</p>
+<p>1st line: {ALERT.SENDTO}</p>
+<p>2nd line: {ALERT.SUBJECT}</p>
+<p>3rd line: {ALERT.MESSAGE}</p>
+<p><img alt="a" src="image/mediatype1.PNG" /></p>
+<ul>
+<li>Add media-type này cho admin user [Administration &gt; Users]</li>
+</ul>
+<p>Type: Vitrage Notifications</p>
+<p>Send to: rabbit://rabbit_user:rabbit_pass@10.60.117.159:5672/ &lt;— Vitrage message bus url</p>
+<p>When active: 1-7,00:00-24:00</p>
+<p>Use if severity: tick all options</p>
+<p>Status: Enabled</p>
+<p><img alt="a" src="image/mediatype2.PNG" />
+- Thêm action cho các trigger: [Configuration &gt; Actions &gt; Create Action &gt; Action]</p>
+<p>Name: Forward to Vitrage</p>
+<p>Default Subject: {TRIGGER.STATUS}</p>
+<p>Add an operation:</p>
+<p>Send to Users: Admin</p>
+<p>Send only to: Vitrage Notifications</p>
+<p>Default Message:</p>
+<p>host={HOST.NAME1}</p>
+<p>hostid={HOST.ID1}</p>
+<p>hostip={HOST.IP1}</p>
+<p>triggerid={TRIGGER.ID}</p>
+<p>description={TRIGGER.NAME}</p>
+<p>rawtext={TRIGGER.NAME.ORIG}</p>
+<p>expression={TRIGGER.EXPRESSION}</p>
+<p>value={TRIGGER.VALUE}</p>
+<p>priority={TRIGGER.NSEVERITY}</p>
+<p>lastchange={EVENT.DATE} {EVENT.TIME}</p>
+<p>To send events add under the Conditions tab:</p>
+<p>(A) Maintenance status not in maintenance
+<img alt="a" src="image/action1.PNG" />
+<img alt="a" src="image/action2.PNG" /></p>
+<h3 id="ref">Ref:<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<p>https://github.com/openstack/vitrage/blob/master/doc/source/contributor/zabbix_vitrage.rst</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/cloud-monitor/auto_scaling_auto_healing" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../../..';</script>
+    <script src="../../../../../js/theme.js" defer></script>
+      <script src="../../../../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="MkDocs Team">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Entity graph - auto_scale_heal</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Entity graph";
+    var mkdocs_page_input_path = "tech_detail/vitrage/vitrage-doc/entity_graph.md";
+    var mkdocs_page_url = "/tech_detail/vitrage/vitrage-doc/entity_graph/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> auto_scale_heal</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Introduction</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/readme/">Issue describe</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technical Solution</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/need_review/auto_healing/">Auto Healing</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technology detail</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">vitrage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../mistral/mistral-doc/readme/">mistral</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../zabbix/zabbix-doc/readme/">zabbix</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../aodh/aodh-doc/readme/">aodh</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../ceilometer/ceilometer-doc/readme/">ceilometer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../gnocchi/gnocchi-doc/readme/">gnocchi</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tick/tick-doc/readme/">TICK</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Blueprints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/propose/readme/">Propose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/start/readme/">Start</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/in_process/readme/">In process</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/need_review/readme/">Need review</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/sloved/readme/">Sloved</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../about/release-notes/">Release Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">auto_scale_heal</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Entity graph</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Với mục đích tổ chức resource, phân tích alarm của vitrage thì chức năng hiển thị ra graph là tính năng quan trọng nhất của vitrage.
+Graph được vitrage hiển thị có thể đưa ra mô hình các thực thể hệ thống, state + relation giữa các thực thể.
+<img alt="kttq" src="../image/graph0.png" /></p>
+<h3 id="1-hoat-ong-tao-graph">1. Hoạt động tạo graph<a class="headerlink" href="#1-hoat-ong-tao-graph" title="Permanent link">┴</a></h3>
+<p>2 thành phần đóng góp hoạt động chính trong tạo graph này là vitrage datasouce-driver và vitrage graph.</p>
+<p>Vitrage datasource-driver trách nhiệm :
+- Thu thập thông tin của các service trong hệ thống (nova, neutron, cinder, heat,..), đưa ra được các thực thể (entity) và mối quan hệ (relationships) giữa chúng.<br/>
+Mỗi thực thể có thể là :
+  - một <em>resource</em> : host, volume, stack,... 
+  - một <em>alarm</em> : aodh alarm, zabbix alarm, nagios alarm <br/>
+(alarm hay resoucre được phân biệt bởi thuộc tính "category" của thực thể.)
+- Đồng thời cũng nó định nghĩa ra cách chuyển hóa thông tin này về các đổi tượng đỉnh, cạnh và gọi đến <em>vitrage graph</em> để hiển thị</p>
+<p>Mỗi datasouce driver định nghĩa 2 class: Driver Class, Transformer Class
+- Driver Class : Định nghĩa cách lấy thông tin về thực thể: resources (physical, virtual) ; alarms (Aodh, Nagios, Zabbix...) các sự cách thức lấy thông tin
+- Transformer Class: Định nghĩa cách đưa được thông tin đó vào đồ thị, như:  với mỗi sự kiện cần thêm, sửa xóa các đỉnh, cạnh như thế nào</p>
+<p>Khi khởi tạo graph, datasouce driver gọi "get-all" - lấy về toàn bộ thông tin hệ thống hiện tại. Bằng cách tạo các client gọi đến api của mỗi service (nova, neutron,...) </p>
+<p>Defaut cứ 10 phút, diver lại snapshot dữ liệu hiện tại và gọi get-all một lần</p>
+<p>Khi có sự thay đổi trong hệ thống : vd thêm bớt host, có aodh alarm. Vitrage nhận biết bởi 1 trong 2 cách:
+- polling mechanism: gọi đến hàm get_changes - định nghĩa trong Driver Class
+- pushing mechanism: đọc được messeage từ message queue mà service đó gửi lên, topic "vitrage_notifications"
+( chỉ có  static datasouce driver dùng polling - tức sẽ đọc từ thư mục- hoặc trong database; các datasouce khác đều sử dụng pushing mechaism)</p>
+<p>Xem thêm về cách viết 1 datasouce tại : https://github.com/openstack/vitrage/blob/stable/queens/doc/source/contributor/add-new-datasource.rst
+Vitrage graph có trách nhiệm: <br/>
+Kết nối với networkx để trình diễn đồ thị cho người dùng. Đồng thời nó cũng trả lời các truy vẫn đồ thị của khi các thành phần khác hỏi đến (vd vitrage-evaluator gọi khi thực hiện các kịch bản deduce-alarm; rca)</p>
+<h3 id="cac-loai-datasouce">Các loại datasouce:<a class="headerlink" href="#cac-loai-datasouce" title="Permanent link">┴</a></h3>
+<ul>
+<li>openstack datasource: aodh, ceilometer, cinder, heat, neutron, nova.</li>
+<li>extenal monitor datasource:  collectd, zabix, nagios, doctor.</li>
+<li>static datasource: đọc thông tin từ các file cấu hình người dùng cấp</li>
+</ul>
+<p>Cách vitrage chuẩn hóa thông tin về trạng thái của các thực thể từ datasouce: </p>
+<p>https://github.com/openstack/vitrage/blob/stable/queens/doc/source/contributor/alarm-severity-config.rst</p>
+<p>https://github.com/openstack/vitrage/blob/stable/queens/doc/source/contributor/resource-state-config.rst</p>
+<p>Các <em>openstack datasource</em> thì ta chỉ cần cấu hình oslo messaging notifications vào topic <em>vitrage_notifications</em>; 2 nguồn còn lại thiết đặt có phức tạp hơn được đề cập ở dưới đây.</p>
+<h3 id="cach-cau-hinh-static-datasource">Cách cấu hình static datasource:<a class="headerlink" href="#cach-cau-hinh-static-datasource" title="Permanent link">┴</a></h3>
+<p>Mục đích thêm static datasource là giúp người dùng bổ sung vào đồ thị các thực thể chưa quản lý bởi bất kỳ datasouce nào khác, nó có thể mô tả cho đối tượng  physical, virtual hoặc application vd: switch, route, service,...</p>
+<p>Thêm vào /etc/vitrage/vitrage.conf:</p>
+<pre><code>[static]
+directory = /etc/vitrage/static_datasources/
+changes_interval = 10
+</code></pre>
+
+<p>Trong đó directory nơi chứa các file yaml  khai báo static; changes_interval 10s cho biết vitrage sẽ kiểm tra thay đổi trong thư mục 10s một lần</p>
+<p>Template cho khai báo cho static datasouce có dạng:</p>
+<pre><code>metadata:
+  name:   name template
+  description:   description
+definitions:
+  entities:             
+    - static_id: s1     
+      type: switch      
+      id: 12345         
+      name: switch-1    
+      state: active    
+      ...
+    - static_id: h1
+      type: nova.host   
+      id: 1            
+      state: active     
+      purpose: CI       
+      ...
+  relationships:
+    - source: s1  
+      target: h1   
+      relationship_type: attached 
+</code></pre>
+
+<p>Mục metadata: khai báo thông tin của tài liệu</p>
+<p>Mục definitions: khai báo các thực thể muốn thêm vào:
+- <strong>entities</strong>: danh sách thực thể muốn thêm , trong đó: <br/>
+<strong>static_id</strong>: id dùng trong template, phạm vi nằm trong 1 template, mục đích như tên viết gọn <br/> 
+<strong>type</strong>: kiểu resource, có thể khai báo bất kỳ kiểu nào, có thể là kiểu có sẵn: openstack.cluster, nova.zone, nova.host, nova.instance, cinder.volume, neutron.network, neutron.port, heat.stack ; hay kiểu riêng tùy người dùng, vd port-switch, port-host,... <br/>
+<strong>id</strong>: định danh, id và type cơ bản sẽ là ánh xạ 1 phần tử từ thế giới thực vào graph <br/>
+<strong>name</strong>: tên resource <br/>
+<strong>state</strong>: giá trị tùy chọn, nếu là resource đã có sẵn trong đồ thị ta không cần khai báo vào. Nhưng nếu đây lần đầu resource thêm vào thì buộc phải có, thường để giá trị là active hoặc avalable <br/>
+- <strong>relationships</strong>: quan hệ giữa các thực thể : <br/>
+<strong>source</strong>, <strong>target</strong> :  static id của thực thể nguồn, đích  <br/>
+<strong>relationship_type</strong>: có thể nhận bất kỳ giá trị nào. Thể hiện mối quan hệ 2 thực thể (hay nhãn của cạnh nối 2 đỉnh <br/>
+Tuy nhiên để về sau viết template cho chính xác, relationship_type thường liên quan đến type của source và target. Dưới đây là các quan hệ được quy ước ngầm của các datasoucre sẵn có của vitrage:
+  - 'on'       : aodh (alarm) on nova.instance. <br/>
+  - 'contains' : openstack.cluster contains nova.zone ; nova.zone contains nova.host ; nova.host contains nova.instance ; neutron.network contains neutron.port <br/>
+  - 'attached' : nova.instance attached cinder.volume ; nova.instance attached neutron.port <br/>
+  - 'comprised': heat.stack comprised nova.instance ; heat.stack comprised cinder.volume ; heat.stack comprised neutron.network ; heat.stack comprised neutron.port <br/>
+Để mô tả các entity vật lý : hiện có switch, port switch, port host, em có khai báo trong các file static datasource config các type entity:
+  - switch     : tương ứng với switch
+  - port_switch: port gắn với switch <br/>
+  - port_host  : port vật lý gắn với host <br/>
+  - port_ovs   : port virtual tạo với ovs <br/>
+Một số relationship_type em đặt tương ứng cho các static entity khi trên: <br/>
+  - 'attached' : port_switch attached switch ; port_host attached nova.host ; port_ovs attached neutron.network <br/>
+  - 'connect'  : port_switch connect port_host ; port_host connect port_ovs <br/>
+  (việc tách biệt từng loại port như vậy thấy sẽ có lợi tránh nhập nhằng khi viết template sau này)</p>
+<p>Ví dụ add static cho mô hình như hình vẽ đầu bài viết:
+cluster có 2 host, được gắn vào cùng switch trên port enp4s0f0 , đồng thời mỗi port này đều kết nối vitrual port br-provider : 
+Ta cấu static datasource như sau:</p>
+<p>Thêm file <a href="../file/port_host-controller.yaml">/etc/vitrage/static_datasources/port_host-controller.yaml</a> : thêm static các port của host 1</p>
+<p>Thêm file <a href="../file/port_host-compute02.yaml">/etc/vitrage/static_datasources/port_host-compute02.yaml</a> : thêm static các port của host 2</p>
+<p>Thêm file <a href="../file/port_switch-01.yaml">/etc/vitrage/static_datasources/port_switch-01.yaml</a> : thêm static các port của switch</p>
+<p>Thêm file <a href="../file/connect_port.yaml">/etc/vitrage/static_datasources/connect_port.yaml</a> : biểu thị mối quan hệ kết nối của các port host vào port switch</p>
+<h3 id="cach-cau-hinh-zabbix-datasouce">Cách cấu hình zabbix datasouce:<a class="headerlink" href="#cach-cau-hinh-zabbix-datasouce" title="Permanent link">┴</a></h3>
+<p>Mục đích là giúp vitrage có được các thông tin monitor từ các nguồn physical: port, host từ nguồn external datasource (zabbix) mang về</p>
+<p>Cài đặt zabbix : https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-zabbix-to-securely-monitor-remote-servers-on-ubuntu-16-04</p>
+<p>Cấu hình mapping các alarm tại thực thể vật lý của zabbix vào thực thể trên graph:</p>
+<ul>
+<li>1.Thiết lập monior port trên zabbix:</li>
+<li><a href="../zabbix_conf/discover_switch_interface_down/">Cấu hình zabbix để phát hiện một port của switch down</a></li>
+<li><a href="../zabbix_conf/discover_host_interface_down/">Cấu hình zabbix để phát hiện một port của host down</a></li>
+<li>(mỗi port của switch cấu hình tương ứng  1 zabbix host, mỗi port của host cũng cấu hình thành 1 zabbix host)</li>
+<li>2.<a href="../zabbix_conf/config_zabbix_media/">Cấu hình để khi triger zabbix bật lên sẽ gửi cảnh báo về vitrage ( gửi vào rabbitmq)</a></li>
+<li>Ref: https://docs.openstack.org/vitrage/latest/contributor/zabbix_vitrage.html</li>
+<li>3/Thiết lập tại vitrage <br/></li>
+<li>
+<p>Thêm vào file /etc/vitrage/vitrage.conf:</p>
+<p>```
+[datasources]
+snapshots_interval = 300</p>
+<h1 id="names-of-supported-plugins-list-value">Names of supported plugins (list value)<a class="headerlink" href="#names-of-supported-plugins-list-value" title="Permanent link">┴</a></h1>
+<p>types = zabbix,nova.host,nova.instance,nova.zone,static,aodh,cinder.volume,neutron.network,neutron.port,heat.stack</p>
+<p>[zabbix]
+url = http://<ip>/zabbix
+password = zabbix
+user = admin
+config_file = /etc/vitrage/zabbix_conf.yaml
+```</p>
+</li>
+<li>
+<p>Mapping các thực thể của zabbix quản lý vào các static resource entity vitrage đã cấu hình .<br/> Vd: theo như mô hình như trên hình , ta mapping các port của host, switch zabbix monitor vào các static datasource . Tại zabbix đã tạo đủ các host:</p>
+</li>
+</ul>
+<p><img alt="a" src="../image/host_zabbix1.PNG" />
+ Thêm file zabbix_conf.yaml:</p>
+<pre><code>```
+cat /etc/vitrage/zabbix_conf.yaml
+zabbix:
+- zabbix_host: controller port enp4s0f0
+  type: port
+  name: controller-port-enp4s0f0
+
+- zabbix_host: compute02 port enp4s0f0
+  type: port
+  name: compute02-port-enp4s0f0
+
+- zabbix_host: Interface Gi1-0-21
+  type: port
+  name: switch-port-g-1-0-21
+
+- zabbix_host: Interface Gi1-0-20
+  type: port
+  name: switch-port-g-1-0-20
+
+- zabbix_host: Interface Gi1-0-22
+  type: port
+  name: switch-port-g-1-0-22
+```
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<h3 id="mot-so-loi-a-gap">Một số lỗi đã gặp<a class="headerlink" href="#mot-so-loi-a-gap" title="Permanent link">┴</a></h3>
+<h3 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<p>https://docs.openstack.org/vitrage/latest/contributor/static-config.html 
+https://docs.openstack.org/vitrage/latest/contributor/add-new-datasource.html
+https://docs.openstack.org/vitrage/latest/contributor/configuration.html</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/cloud-monitor/auto_scaling_auto_healing" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

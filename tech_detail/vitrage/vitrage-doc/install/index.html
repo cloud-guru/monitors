@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="MkDocs Team">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Install - auto_scale_heal</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Install";
+    var mkdocs_page_input_path = "tech_detail/vitrage/vitrage-doc/install.md";
+    var mkdocs_page_url = "/tech_detail/vitrage/vitrage-doc/install/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> auto_scale_heal</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Introduction</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/readme/">Issue describe</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technical Solution</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/need_review/auto_healing/">Auto Healing</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technology detail</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">vitrage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../mistral/mistral-doc/readme/">mistral</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../zabbix/zabbix-doc/readme/">zabbix</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../aodh/aodh-doc/readme/">aodh</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../ceilometer/ceilometer-doc/readme/">ceilometer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../gnocchi/gnocchi-doc/readme/">gnocchi</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tick/tick-doc/readme/">TICK</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Blueprints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/propose/readme/">Propose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/start/readme/">Start</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/in_process/readme/">In process</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/need_review/readme/">Need review</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/sloved/readme/">Sloved</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../about/release-notes/">Release Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">auto_scale_heal</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Install</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="huong-dan-cai-at-vitrage">Hướng dẫn cài đặt vitrage:<a class="headerlink" href="#huong-dan-cai-at-vitrage" title="Permanent link">┴</a></h2>
+<p>Sau khi so sánh các phiên bản pike-queens, Em thấy sử dụng bản queen phù hợp hơn, do:
+Bản vitrage pike gặp một số issue như:
+- Darshboard giao tiếp với api keystone version_2. Sử dụng sẽ thấy lỗi "missing project id, project name,.." . Cách fix: sửa trong code
+- Các template được đọc trực tiếp trong thư mục, cần r dịch vụ khi thêm template mới. <br/>
+Sang bản queen , template được lưu vào mysql . Database bắt đầu mới dược vitrage sử dụng tại bản queens.
+- Hỗ trợ aodh chưa hoàn chỉnh. Sang bản queen mới có thể nhận  alarm dạng "Aodh Gnocchi threshold alarm"</p>
+<p>Thử nghiệm bản queen em thấy cũng giao tiếp tốt với các service openstack khác (nova, neutron,..) verion pike</p>
+<p>Vậy dưới đây là hướng dẫn cài đặt cho vitrage version queens</p>
+<h3 id="cai-tren-devstack">Cài trên devstack:<a class="headerlink" href="#cai-tren-devstack" title="Permanent link">┴</a></h3>
+<ul>
+<li>
+<p>Tuân theo các hướng dẫn cơ bản tại https://docs.openstack.org/devstack/latest/</p>
+</li>
+<li>
+<p>File local.conf:</p>
+</li>
+</ul>
+<pre><code>[[local|localrc]]
+GIT_BASE=http://github.com
+HOST_IP=192.168.2.54
+ADMIN_PASSWORD=secret
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+MULTI_HOST=True
+enable_plugin vitrage https://git.openstack.org/openstack/vitrage stable/queens
+enable_plugin vitrage-dashboard https://git.openstack.org/openstack/vitrage-dashboard stable/queens
+enable_plugin heat https://git.openstack.org/openstack/heat stable/queens
+enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer stable/queens
+enable_plugin aodh https://git.openstack.org/openstack/aodh stable/queens
+[[post-config|$NOVA_CONF]]
+[DEFAULT]
+notification_topics = notifications,vitrage_notifications
+notification_driver=messagingv2
+
+[notifications]
+versioned_notifications_topics = versioned_notifications,vitrage_notifications
+notification_driver = messagingv2
+
+[[post-config|$NEUTRON_CONF]]
+[DEFAULT]
+notification_topics = notifications,vitrage_notifications
+notification_driver=messagingv2
+
+[[post-config|$CINDER_CONF]]
+[DEFAULT]
+notification_topics = notifications,vitrage_notifications
+notification_driver=messagingv2
+
+[[post-config|$HEAT_CONF]]
+[DEFAULT]
+notification_topics = notifications,vitrage_notifications
+notification_driver=messagingv2
+
+[[post-config|$AODH_CONF]]
+[oslo_messaging_notifications]
+driver = messagingv2
+topics = notifications,vitrage_notifications
+</code></pre>
+
+<h3 id="cai-tren-openstack">Cài trên openstack<a class="headerlink" href="#cai-tren-openstack" title="Permanent link">┴</a></h3>
+<h4 id="chuan-bi-cho-keystone-endpoint-database">chuẩn bị cho keystone-endpoint, database:<a class="headerlink" href="#chuan-bi-cho-keystone-endpoint-database" title="Permanent link">┴</a></h4>
+<ul>
+<li>Tại keystone chạy các lệnh để tạo user, serivce, endpoint</li>
+</ul>
+<pre><code>openstack user create vitrage --password Welcome123 --domain=Default
+openstack role add admin --user vitrage --project service
+openstack role add admin --user vitrage --project admin
+openstack service create rca --name vitrage --description=&quot;Root Cause Analysis Service&quot;
+openstack endpoint create --region RegionOne  metric public http://controller:8041
+openstack endpoint create --region RegionOne  rca public http://controller:8999
+openstack endpoint create --region RegionOne  vitrage internal http://controller:8999 
+openstack endpoint create --region RegionOne  vitrage admin http://controller:8999 
+</code></pre>
+
+<ul>
+<li>Tại mysql tạo vitrage database:</li>
+</ul>
+<pre><code>mysql -u root -p
+CREATE DATABASE vitrage;
+GRANT ALL PRIVILEGES ON vitrage.* TO 'vitrage'@'localhost' \
+  IDENTIFIED BY 'Welcome123';
+GRANT ALL PRIVILEGES ON vitrage.* TO 'vitrage'@'%' \
+  IDENTIFIED BY 'Welcome123';
+</code></pre>
+
+<h4 id="cai-vitrage-core">cài vitrage-core<a class="headerlink" href="#cai-vitrage-core" title="Permanent link">┴</a></h4>
+<ul>
+<li>Cài các gói </li>
+</ul>
+<pre><code>wget http://tarballs.openstack.org/vitrage/vitrage-stable-queens.tar.gz
+tar xvzf vitrage-stable-queens.tar.gz
+cd vitrage-2.3.1.dev3/
+pip install -r requirements.txt
+python setup.py install
+</code></pre>
+
+<ul>
+<li>Tạo thư mục conf</li>
+</ul>
+<pre><code>cd vitrage-2.3.1.dev3/
+cp -r etc/vitrage /etc/
+mkdir /etc/vitrage/static_datasources
+chmod 755 /etc/vitrage/static_datasources
+mkdir /var/log/vitrage
+</code></pre>
+
+<ul>
+<li>Tạo file conf /etc/vitrage/vitrage.conf nội dung :</li>
+</ul>
+<pre><code>[DEFAULT]
+transport_url = rabbit://openstack:Welcome123@controller:5672/
+log_dir = /var/log/vitrage
+debug = false
+[datasources]
+types = zabbix,nova.host,nova.instance,nova.zone,static,neutron.network,neutron.port,heat.stack,doctor
+
+
+[keystone_authtoken]
+region_name = RegionOne
+www_authenticate_uri = http://conroller:5000
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
+auth_type = password
+project_domain_id = default
+user_domain_id = default
+project_name = service
+username = vitrage
+password = Welcome123
+project_domain_id = default
+user_domain_id = default
+[database]
+connection = mysql+pymysql://vitrage:Welcome123@controller/vitrage
+
+[service_credentials]
+auth_url = http://controller:5000/v3
+auth_type = password
+auth_version = v3
+region_name = RegionOne
+project_domain_id = default
+user_domain_id = default
+project_name = admin
+username = vitrage
+password = Welcome123
+interface = internal
+memcached_servers = controller:11211
+
+[oslo_messaging_notifications]
+driver = messagingv2
+topics = notifications,vitrage_notifications
+
+</code></pre>
+
+<p>( sửa các phần authen cho phù hợp hệ thống cụ thể) </p>
+<h4 id="cai-vitrage-drashboard">cài vitrage-drashboard<a class="headerlink" href="#cai-vitrage-drashboard" title="Permanent link">┴</a></h4>
+<ul>
+<li>Cài các gói: </li>
+</ul>
+<pre><code>wget http://tarballs.openstack.org/vitrage-dashboard/vitrage-dashboard-stable-queens.tar.gz
+tar xvzf vitrage-dashboard-stable-queens.tar.gz
+cd vitrage-dashboard-1.4.3.dev1/
+pip install -r requirements.txt
+python setup.py install
+cp enabled/* /usr/share/openstack-dashboard/openstack_dashboard/local/enabled/
+</code></pre>
+
+<p>( gói /usr/share/openstack-dashboard có thể có địa chỉ khác biệt tùy hệ thống)
+- compress horion</p>
+<pre><code>sudo python /usr/share/openstack-dashboard/manage.py compress
+sudo python /usr/share/openstack-dashboard/manage.py collectstatic --noinput
+sudo service apache2 restart
+</code></pre>
+
+<h4 id="cai-vitrage-cli-client-python_vitrageclient">cài vitrage-cli-client (python_vitrageclient)<a class="headerlink" href="#cai-vitrage-cli-client-python_vitrageclient" title="Permanent link">┴</a></h4>
+<pre><code>pip install python_vitrageclient==2.1.0 
+</code></pre>
+
+<h4 id="thiet-at-cho-cac-serivice-khac">Thiết đặt cho các serivice khác<a class="headerlink" href="#thiet-at-cho-cac-serivice-khac" title="Permanent link">┴</a></h4>
+<p>vitrage lấy thông tin datasouce từ rabbitmq topic . thay đổi trong aodh.conf, nova.conf, neutron.conf, cinder.conf, heat.conf:</p>
+<pre><code>[oslo_messaging_notifications]
+driver = messagingv2
+topics = notifications,vitrage_notifications
+</code></pre>
+
+<p>restart các dịch vụ này</p>
+<h3 id="khoi-chay">Khởi chạy:<a class="headerlink" href="#khoi-chay" title="Permanent link">┴</a></h3>
+<p>Tạo database:</p>
+<pre><code>vitrage-dbsync --config-file /etc/vitrage/vitrage.conf
+</code></pre>
+
+<p>Chạy các dịch vụ:</p>
+<pre><code>vitrage-collector --config-file /etc/vitrage/vitrage.conf
+vitrage-graph --config-file /etc/vitrage/vitrage.conf
+vitrage-api --config-file /etc/vitrage/vitrage.conf
+vitrage-notifier --config-file /etc/vitrage/vitrage.conf
+vitrage-persistor --config-file /etc/vitrage/vitrage.conf
+</code></pre>
+
+<h3 id="kiem-tra-hoat-ong-mot-so-lenh-chay">Kiểm tra hoạt động: một số lệnh chạy<a class="headerlink" href="#kiem-tra-hoat-ong-mot-so-lenh-chay" title="Permanent link">┴</a></h3>
+<ul>
+<li><strong>vitrage alarm list</strong>: show all existing alarm</li>
+<li><strong>vitrage resource list</strong>: show all existing resource of nova, neutron, cinder, aodh,... which you configued</li>
+<li><strong>vitrage resource show <code>&lt;a_specificed_resource_vitrage_ID&gt;</code></strong>: show information about specificed resource</li>
+</ul>
+<h3 id="mot-so-loi-khi-cai-at-a-gap">Một số lỗi khi cài đặt đã gặp:<a class="headerlink" href="#mot-so-loi-khi-cai-at-a-gap" title="Permanent link">┴</a></h3>
+<p>Khi khởi tạo data, gặp lỗi báo:</p>
+<pre><code>DBError: (pymysql.err.InternalError) (1075, u'Incorrect table definition; there can be only one auto column and it must be defined as a key')
+</code></pre>
+
+<p>Nguyên nhân: kịch bản tạo database của vitrage lỗi. Transaction trong kịch bản này bị từ chối bởi mysql storage engine
+Khắc phục : sửa defaut storage engine từ InnoDB về MyISAM</p>
+<p>https://stackoverflow.com/questions/6479655/how-do-i-set-myisam-as-default-table-handler-in-mysql</p>
+<h3 id="ref">Ref<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<p>https://docs.openstack.org/vitrage/latest/install/install-rdo.html#manual</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/cloud-monitor/auto_scaling_auto_healing" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

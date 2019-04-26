@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="MkDocs Team">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Architecture - auto_scale_heal</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Architecture";
+    var mkdocs_page_input_path = "tech_detail/vitrage/vitrage-doc/architecture.md";
+    var mkdocs_page_url = "/tech_detail/vitrage/vitrage-doc/architecture/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> auto_scale_heal</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Introduction</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/readme/">Issue describe</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technical Solution</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/need_review/auto_healing/">Auto Healing</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Technology detail</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">vitrage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../mistral/mistral-doc/readme/">mistral</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../zabbix/zabbix-doc/readme/">zabbix</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../aodh/aodh-doc/readme/">aodh</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../ceilometer/ceilometer-doc/readme/">ceilometer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../gnocchi/gnocchi-doc/readme/">gnocchi</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tick/tick-doc/readme/">TICK</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Blueprints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../issue/propose/readme/">Propose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/start/readme/">Start</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/in_process/readme/">In process</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/need_review/readme/">Need review</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../issue/sloved/readme/">Sloved</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../about/release-notes/">Release Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">auto_scale_heal</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Architecture</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="i-tong-quan-ve-vitrage">I. Tổng quan về Vitrage:<a class="headerlink" href="#i-tong-quan-ve-vitrage" title="Permanent link">┴</a></h2>
+<h3 id="1-khai-niem">1. Khái niệm:<a class="headerlink" href="#1-khai-niem" title="Permanent link">┴</a></h3>
+<p>Vitrage - OpenStack RCA (Root Cause Analysis) là dịch vụ giúp tổ chức, phân tích, các alarm, event xảy đến với hệ thống, nhằm làm rõ được những alarm này có nguồn gốc từ đâu và có thể gây ảnh hưởng thế nào.</p>
+<p>Vitrage có các use-case tổng quan:</p>
+<ul>
+<li>Holistic and complete view: vitrage có thể biểu diễn mỗi quan hệ logic của các tài nguyên trong hệ thống thành grap+topology cho người xem, bao gồm cả thực thể virtual (instance, port, zone,..) hay physical (host , switch,..) kết nối với nhau. Để khi có một alarm xuất hiện từ một thành phần ta giải thích được nó sẽ ảnh hưởng tới thành phần khác như thế nào.</li>
+<li>Deduced alarm, state: mục đích nhắm tới là đưa ra cảnh báo về một thành phần hệ thống, ngay trước cả khi nó được phát hiện trực tiếp bởi hệ thống monitor. Nhấn mạnh vào yếu tố “suy luận” để bật một deduced alarm : <br/>
+Ví dụ:<br/>
+<em>Khi switch tới host gặp vấn đề, khiến ngay các instance nối với host đó cũng không monitor được,  vitrage có thể đưa ra cảnh báo với insance.<br/>
+</em>Trong mô hình HA cho một dịch vụ trên 3 VM mà cả 2 VM đều lỗi, thì vm còn lại cần bật warning<br/>
+*Bật warning trên vm khi thấy không đủ host để migrate nếu cần.<br/></li>
+<li>Root Cause Indicators: biểu diễn quan hệ nguyên nhân-kết quả giữa các alarm. Vitrage đọc các luật người dùng định nghĩa, xem xem có thể áp dụng luật nào vào trạng thái hiện tại và đưa các liên kết “causual” vào biểu đồ. Giúp cho việc tìm ra nguồn kích hoạt gốc của cho các alarm. </li>
+</ul>
+<h3 id="2-kien-truc">2. Kiến trúc:<a class="headerlink" href="#2-kien-truc" title="Permanent link">┴</a></h3>
+<p><img alt="kttq" src="../image/kttq.png" /></p>
+<ul>
+<li>Vitrage bao gồm các thành phần:</li>
+<li>ClI, Drashboard, API: nhận yêu cầu người dùng, gọi đến các thành phần khác.
+Vitrage data source driver: Nhiệm vụ lấy input đầu vào thông tin về các resource hệ thống về cho vitrage graph hiển thị. Dữ liệu bao gồm thông tin như: resource có các thực thể nào? quan hệ giữa các thực thể đó. Vd: thực thể trong aodh là “alarm”, của nova là “zone” chứa “host” chứa “instance”. Các datasoucrce gồm: <br/>
+từ nguồn openstack : aodh, ceilometer, cinder, heat, neutron, nova.<br/>
+từ nguồn extenal monitor, gồm: collectd, zabix, nagios, doctor.<br/>
+static datasource: đọc thông tin từ các file cấu hình người dùng cấp<br/>
+( trên là từ bản pike-queens, bản rocky có thêm kubernetes và prometheus)</li>
+<li>Vitrage graph: Giữ các thông tin từ datasouce và trình diễn nó ra, đồng thời cũng lấy cập nhật của khối evaluator khi có. Driver để vẽ đồ thị là networkX , đồng thời cũng inplement môt số phép xử lý đồ thị khi được gọi, vd duyệt, tìm đỉnh, cạnh…</li>
+<li>Vitrage evaluator:  Khi có thông báo từ graph về một số thay đổi của các thực  thể, nó truy vấn trong các kịch bản (<em>template</em> do người dùng định nghĩa từ trước) và áp dụng các thay đổi trạng thái cho các thực thể  (set_state, raise_alarm, add_causual_relationship)</li>
+<li>Vitrage notifiers: có nhiệm vụ thông báo cho các thành phần khác về các thay đổi trong trang thái hệ thống, áp dụng các action lên các dịch vụ đó. Hiện có các plugin cho: aodh, nova, mistral ; snmp, webhook. <br/>
+Theo default khi mới cài đặt, chưa có plugin nào áp dụng.</li>
+<li>Vitrage machine leaning: Thiết kế ra nhằm giúp vitrage có thể: xem xét từ các alarm , deduce-alarm đã xuất hiện, tính rra sự liên quan giữa các alarm, gợi ý cho người dùng viết các template mới.</li>
+</ul>
+<h3 id="3-cac-luong-hoat-ong-co-ban">3. Các luồng hoạt động cơ bản:<a class="headerlink" href="#3-cac-luong-hoat-ong-co-ban" title="Permanent link">┴</a></h3>
+<p><img alt="kttq" src="../image/lhd1.png" /></p>
+<ul>
+<li>Trường hợp thêm một instance mới:<br/></li>
+<li>Nova tạo thêm instance , gửi thông báo lên rabbitmq topic “vitrage_notifications”. Nova-datasouce driver nhận thông báo. <br/></li>
+<li>Nova-datasource Driver gửi thông tin vào vitrage entity queue ( bản chất queue này không phải message queue mà đơn giản là một mảng bình thường)<br/></li>
+<li>Entity processor polling event từ entity queue, xác định thông tin của thực thể cần thêm <br/></li>
+<li>Entity trasformers chuyển thông tin của thực thể về các đối tượng trong graph: đỉnh, cạnh, neghbors,... <br/></li>
+<li>
+<p>Entity processor gọi graph api thêm đỉnh, cạnh mới.<br/>
+<img alt="kttq" src="../image/lhd1vd.png" /></p>
+</li>
+<li>
+<p>Trường hợp thêm có một alarm :<br/>
+Khi phát hiện switch down, vitrage nhận được alarm từ nagios. Thiết lập kịch bản sẽ thực hiện là: tạo deduce-alarm trên các host gắn với switch, các instance gắn trên host và triger lại cho aodh. <br/>
+<img alt="kttq" src="../image/lhd2.png" />
+Alarm về bản chất cũng là 1 entity nên các bước từ 1 đến 5 cũng giống như use case trên. vd thêm 1 entiry có type alarm thông báo switch mà host 1 attach bị down <br/></p>
+</li>
+<li>Khi có bất kỳ thay đổi nào về graph thì evaluator cũng được gọi đến. Evaluator biết được có 1 đỉnh mới được add<br/></li>
+<li>Evaluator xem xét các template đã có thì thấy có 1 kịch bản cần áp dụng: bật deduce-alarm error trên mỗi instance gắn với host đó. <br/></li>
+<li>Evaluator push alarm vào entity queue.<br/></li>
+<li>Graph update thêm các alarm mới <br/></li>
+<li>Graph thêm thông báo rằng có 1 alarm mới trên instance, đẩy thông báo này vào messasge queue <br/></li>
+<li>Vitrage Notifier định nghĩa alarm cho aodh - set state “alarm” <br/>
+<img alt="kttq" src="../image/lhd2vd.png" /></li>
+</ul>
+<h3 id="ref">Ref:<a class="headerlink" href="#ref" title="Permanent link">┴</a></h3>
+<p>https://wiki.openstack.org/wiki/Vitrage </p>
+<p>https://docs.openstack.org/vitrage/ocata/vitrage-use-cases.html</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/cloud-monitor/auto_scaling_auto_healing" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>
