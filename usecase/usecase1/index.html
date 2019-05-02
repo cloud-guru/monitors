@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="MkDocs Team">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>usecase-1 - auto_scale_heal</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "usecase-1";
+    var mkdocs_page_input_path = "usecase/usecase1.md";
+    var mkdocs_page_url = "/usecase/usecase1/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/django.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> auto_scale_heal</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">INTRODUCTION</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../issue/readme/">Issue describe</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">TECHNICAL SOLUTION</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../issue/need_review/auto_healing/">Auto Healing</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">TECHNOLOGY DETAIL</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tech_detail/vitrage/vitrage-doc/architecture/">vitrage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tech_detail/mistral/mistral-doc/readme/">mistral</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tech_detail/zabbix/zabbix-doc/readme/">zabbix</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tech_detail/telemetry/telemetry-doc/readme/">telemetry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tech_detail/tick/tick-doc/readme/">TICK</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">SCENARIO</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">usecase-1</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#noi-dung-kich-ban">Nội dung kịch bản</a></li>
+    
+
+    <li class="toctree-l3"><a href="#thuc-hien">Thực hiện</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#chuan-bi-monitor-cac-thanh-phan">Chuẩn bị monitor các thành phần:</a></li>
+        
+            <li><a class="toctree-l4" href="#cau-hinh-vitrage">Cấu hình vitrage</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">BLUEPRINT</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../issue/propose/readme/">Propose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../issue/start/readme/">Start</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../issue/in_process/readme/">In process</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../issue/need_review/readme/">Need review</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../issue/sloved/readme/">Sloved</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ABOUT</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../about/release-notes/">Release Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">auto_scale_heal</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>SCENARIO &raquo;</li>
+        
+      
+    
+    <li>usecase-1</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="noi-dung-kich-ban">Nội dung kịch bản<a class="headerlink" href="#noi-dung-kich-ban" title="Permanent link">&para;</a></h1>
+<p>Đầu vào monitor:
+ - Memory của VM (qua aodh hoặc zabbix)
+ - Application(s) của VM (theo appname)</p>
+<p>Kịch bản: xuất hiện các alarm
+ - Alarm 1: Memory của VM cao: Nếu % Mem của VM &gt; 90%, hoặc % CPU của VM cao &gt; 95% trong vòng 5 phút
+ - Alarm 2: Application(s) die:
+   - Nếu app không chạy
+   - Hoặc application ID bị đổi (do có 1 tiến trình trên VM monitor application, nếu application bị tắt thì tiến trình monitor sẽ bật lại =&gt; bị đổi PID)</p>
+<p>Yêu cầu:
+- Collect được alarm khi xảy ra (zabbix hoặc telemetry) đẩy cho vitrage
+- Vitrage nhân định Alarm 1 =&gt; Alarm 2
+- Vitrage gọi đến mitral thực hiện auto scaling (optional)</p>
+<h1 id="thuc-hien">Thực hiện<a class="headerlink" href="#thuc-hien" title="Permanent link">&para;</a></h1>
+<h2 id="chuan-bi-monitor-cac-thanh-phan">Chuẩn bị monitor các thành phần:<a class="headerlink" href="#chuan-bi-monitor-cac-thanh-phan" title="Permanent link">&para;</a></h2>
+<p>Ở đây cần monitor instance memory và instance application. Lựa chọn zabbix lấy alarm.</p>
+<ul>
+<li>Đầu tiên cần cài đặt zabbix agent cho mỗi instance. Các agent này cần gửi thông tin thu thập cho một zabbix server cài trên 1 host, mà host đó vitrage có thể kết nối được</li>
+<li>Trên UI của zabbix server, ta cấu hình để monitor memory và application như sau:</li>
+<li>(*) Monitor instance memory: </li>
+<li>Ứng với mỗi instance tạo 1 zabbix host tương ứng<ul>
+<li>Hostname: tên instance.</li>
+<li>Agent interface: interface của instance, kết nối zabbix server và agent</li>
+<li><img alt="us1" src="../image/use-case1-1.png" /></li>
+</ul>
+</li>
+<li>Tạo item để thu thập thông tin memory của instance<ul>
+<li>Vào tab Configuration &gt; host &gt; [instance09] &gt; item &gt; create item </li>
+<li>Key: vm.memory.size(pushed) <br/>
+   (Key này mang ý nghĩa:   % (active + wired) / total memory) <br/>
+   Tham khảo tại: https://www.zabbix.com/documentation/3.2/manual/appendix/items/vm.memory.size_params</li>
+<li><img alt="us1" src="../image/use-case1-2.png" /></li>
+</ul>
+</li>
+<li>Tạo trigger cảnh báo : khi mem dùng của instance vượt quá 90% thì bắn alarm<ul>
+<li>Vào tab: Configuration &gt; host &gt; [instance09] &gt; Triggers &gt; create trigger</li>
+<li><img alt="us1" src="../image/use-case1-3.png" /></li>
+<li>Ở đây avg(50s) tức nó sẽ xem xét giá trị trung bình trong khoảng 50s. Nếu cần trong 5 phút giá trị này cần đặt 1500</li>
+</ul>
+</li>
+<li>(*)Monitor instance application:</li>
+<li>Ta nhận biết application chết bằng cách kiểm tra có sự thay đổi pid không.</li>
+<li>Tạo host: ứng với mỗi application tạo 1 zabbix host: <br/>
+       Giả sử app ta muốn monitor là netcat <br/>
+       <img alt="us1" src="../image/use-case1-4.png" /></li>
+<li>
+<p>Lấy thông tin pid: thêm user parameter: &lt;br/
+      Tạo file</p>
+<pre><code>```
+$ cat /etc/zabbix/zabbix_agentd.d/userparameter_application.conf
+UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;
+```
+</code></pre>
+<ul>
+<li>Vào tab Configuration &gt; host &gt; [instance09] &gt; item &gt; create item <br>
+    với key: appication.pid.[*] thay * bằng tên process muốn monitor
+    <img alt="us1" src="../image/use-case1-5.png" /></li>
+<li>Tạo trigger cảnh báo : khi app không chạy hoặc application pid bị đổi thì bắn alarm <br/></li>
+<li>application.pid [*] = -1 </li>
+<li>OR application.pid [<em>].max(7d) &lt;&gt; application.pid [</em>].min(7d)</li>
+<li><img alt="us1" src="../image/use-case1-6.png" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="cau-hinh-vitrage">Cấu hình vitrage<a class="headerlink" href="#cau-hinh-vitrage" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Map các alarm vào đồ thị:</li>
+<li>Thêm entity app vào đồ thị, vd ta muốn thêm monitor vào 1 app “netcat”</li>
+<li>
+<p>Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
+    ```
+    metadata:
+      name: list of application run on instance
+      description: list of application run on instance
+    definitions:
+      entities:
+        - static_id: app-netcat
+          type: application
+          id: app-netcat
+          state: available</p>
+<pre><code>- static_id: instance9
+  type: nova.instance
+  id: eff1daed-0d97-4975-abbd-3d3e907aeedf
+</code></pre>
+<p>relationships:
+    - source: instance9
+      target: app-netcat
+      relationship_type: run
+```</p>
+<ul>
+<li>Quan hệ: host “instance9” “run” “app-netcat”</li>
+<li>mapping cho alarm của zabbix vào đồ thị: <br/>
+Thêm vào file /etc/vitrage/zabbix_conf.yaml
+```</li>
+<li>zabbix_host: instance09
+  type: nova.instance
+  name: eff1daed-0d97-4975-abbd-3d3e907aeedf</li>
+<li>zabbix_host: app-netcat
+  type: application
+  name: app-netcat
+```</li>
+</ul>
+</li>
+<li>
+<p>Vậy ta đã chuẩn bị xong mô hình input, kết quả: <br/></p>
+</li>
+<li><img alt="us1" src="../image/use-case1-7.png" /></li>
+<li>Cấu hình root-cause-analys:</li>
+<li>
+<p>Thêm template <br/>
+    Tạo file template /etc/vitrage/templates/usecase-1.yaml</p>
+<p><code>metadata:
+  name: rca application died caused by high mem on instance
+  description: rca application died caused by high mem on instance
+definitions:
+  entities:
+      - entity:
+          template_id: alarm_high_memory_used
+          category: ALARM
+          name: instance high memory usage
+      - entity:
+          template_id: alarm_application_died
+          category: ALARM
+          name: application died
+      - entity:
+          template_id: instance
+          category: RESOURCE
+          type: nova.instance
+      - entity:
+          template_id: application
+          category: RESOURCE
+          type: application
+  relationships:
+      - relationship:
+          template_id : alarm_high_memory_on_instance
+          source: alarm_high_memory_used
+          target: instance
+          relationship_type: on
+      - relationship:
+          template_id : alarm_application_died_on_applicaion
+          source: alarm_application_died
+          target: application
+          relationship_type: on
+      - relationship:
+          template_id : instance_run_application
+          source: instance
+          target: application
+          relationship_type: run
+scenarios:
+    - scenario:
+        condition: alarm_high_memory_on_instance and alarm_application_died_on_applicaion and instance_run_application
+        actions:
+            - action:
+                action_type : add_causal_relationship
+                action_target:
+                  source: alarm_high_memory_used
+                  target: alarm_application_died</code></p>
+</li>
+<li>
+<p>Chạy lệnh:</p>
+<p><code>$ vitrage template validate --type standard --path /etc/vitrage/templates/usecase1.yaml
+$ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml</code></p>
+</li>
+<li>
+<p>Kết quả sau khi add template:</p>
+</li>
+<li><img alt="us1" src="../image/use-case1-8.png" /></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../issue/propose/readme/" class="btn btn-neutral float-right" title="Propose">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../tech_detail/tick/tick-doc/readme/" class="btn btn-neutral" title="TICK"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/cloud-monitor/auto_scaling_auto_healing" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../tech_detail/tick/tick-doc/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../issue/propose/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
