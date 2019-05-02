@@ -259,19 +259,16 @@
 <li>Tạo host: ứng với mỗi application tạo 1 zabbix host: <br/>
        Giả sử app ta muốn monitor là netcat <br/>
        <img alt="us1" src="../image/use-case1-4.png" /></li>
-<li>
-<p>Lấy thông tin pid: thêm user parameter: &lt;br/
-      Tạo file</p>
-<pre><code>```
-$ cat /etc/zabbix/zabbix_agentd.d/userparameter_application.conf
-UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;
-```
-</code></pre>
-<ul>
+<li>Lấy thông tin pid: thêm user parameter: &lt;br/
+      Tạo file
+        <code>$ cat /etc/zabbix/zabbix_agentd.d/userparameter_application.conf
+        UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;</code><ul>
 <li>Vào tab Configuration &gt; host &gt; [instance09] &gt; item &gt; create item <br>
     với key: appication.pid.[*] thay * bằng tên process muốn monitor
     <img alt="us1" src="../image/use-case1-5.png" /></li>
-<li>Tạo trigger cảnh báo : khi app không chạy hoặc application pid bị đổi thì bắn alarm <br/></li>
+</ul>
+</li>
+<li>Tạo trigger cảnh báo : khi app không chạy hoặc application pid bị đổi thì bắn alarm <br/><ul>
 <li>application.pid [*] = -1 </li>
 <li>OR application.pid [<em>].max(7d) &lt;&gt; application.pid [</em>].min(7d)</li>
 <li><img alt="us1" src="../image/use-case1-6.png" /></li>
@@ -282,8 +279,7 @@ UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else
 <ul>
 <li>Map các alarm vào đồ thị:</li>
 <li>Thêm entity app vào đồ thị, vd ta muốn thêm monitor vào 1 app “netcat”</li>
-<li>
-<p>Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
+<li>Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
     ```
     metadata:
       name: list of application run on instance
@@ -293,8 +289,7 @@ UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else
         - static_id: app-netcat
           type: application
           id: app-netcat
-          state: available</p>
-<pre><code>- static_id: instance9
+          state: available<pre><code>- static_id: instance9
   type: nova.instance
   id: eff1daed-0d97-4975-abbd-3d3e907aeedf
 </code></pre>
@@ -302,30 +297,21 @@ UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else
     - source: instance9
       target: app-netcat
       relationship_type: run
-```</p>
-<ul>
-<li>Quan hệ: host “instance9” “run” “app-netcat”</li>
-<li>mapping cho alarm của zabbix vào đồ thị: <br/>
-Thêm vào file /etc/vitrage/zabbix_conf.yaml
-```</li>
-<li>zabbix_host: instance09
+<code>- Quan hệ: host “instance9” “run” “app-netcat”
+  - mapping cho alarm của zabbix vào đồ thị: &lt;br/&gt;
+Thêm vào file /etc/vitrage/zabbix_conf.yaml</code>
+- zabbix_host: instance09
   type: nova.instance
-  name: eff1daed-0d97-4975-abbd-3d3e907aeedf</li>
-<li>zabbix_host: app-netcat
+  name: eff1daed-0d97-4975-abbd-3d3e907aeedf
+- zabbix_host: app-netcat
   type: application
   name: app-netcat
-```</li>
-</ul>
-</li>
-<li>
-<p>Vậy ta đã chuẩn bị xong mô hình input, kết quả: <br/></p>
-</li>
-<li><img alt="us1" src="../image/use-case1-7.png" /></li>
-<li>Cấu hình root-cause-analys:</li>
-<li>
-<p>Thêm template <br/>
-    Tạo file template /etc/vitrage/templates/usecase-1.yaml</p>
-<p><code>metadata:
+<code>- Vậy ta đã chuẩn bị xong mô hình input, kết quả: &lt;br/&gt;
+  - ![us1](image/use-case1-7.png)
+- Cấu hình root-cause-analys:
+  - Thêm template &lt;br/&gt;
+Tạo file template /etc/vitrage/templates/usecase-1.yaml</code>
+metadata:
   name: rca application died caused by high mem on instance
   description: rca application died caused by high mem on instance
 definitions:
@@ -370,17 +356,14 @@ scenarios:
                 action_type : add_causal_relationship
                 action_target:
                   source: alarm_high_memory_used
-                  target: alarm_application_died</code></p>
+                  target: alarm_application_died
+<code>- Chạy lệnh:</code>
+$ vitrage template validate &ndash;type standard &ndash;path /etc/vitrage/templates/usecase1.yaml
+$ vitrage template add &ndash;type standard &ndash;path /etc/vitrage/templates/usecase1.yaml
+```
+  - Kết quả sau khi add template:
+  - <img alt="us1" src="../image/use-case1-8.png" /></p>
 </li>
-<li>
-<p>Chạy lệnh:</p>
-<p><code>$ vitrage template validate --type standard --path /etc/vitrage/templates/usecase1.yaml
-$ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml</code></p>
-</li>
-<li>
-<p>Kết quả sau khi add template:</p>
-</li>
-<li><img alt="us1" src="../image/use-case1-8.png" /></li>
 </ul>
               
             </div>
