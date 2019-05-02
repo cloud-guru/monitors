@@ -279,17 +279,19 @@
 <ul>
 <li>Map các alarm vào đồ thị:</li>
 <li>Thêm entity app vào đồ thị, vd ta muốn thêm monitor vào 1 app “netcat”</li>
-<li>Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
-    ```
-    metadata:
-      name: list of application run on instance
-      description: list of application run on instance
-    definitions:
-      entities:
-        - static_id: app-netcat
-          type: application
-          id: app-netcat
-          state: available<pre><code>- static_id: instance9
+<li>Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:</li>
+<li>
+<p>```
+metadata:
+  name: list of application run on instance
+  description: list of application run on instance
+definitions:
+  entities:
+    - static_id: app-netcat
+      type: application
+      id: app-netcat
+      state: available</p>
+<pre><code>- static_id: instance9
   type: nova.instance
   id: eff1daed-0d97-4975-abbd-3d3e907aeedf
 </code></pre>
@@ -299,7 +301,8 @@
       relationship_type: run
 <code>- Quan hệ: host “instance9” “run” “app-netcat”
   - mapping cho alarm của zabbix vào đồ thị: &lt;br/&gt;
-Thêm vào file /etc/vitrage/zabbix_conf.yaml</code>
+Thêm vào file /etc/vitrage/zabbix_conf.yaml
+  -</code>
 - zabbix_host: instance09
   type: nova.instance
   name: eff1daed-0d97-4975-abbd-3d3e907aeedf
@@ -310,7 +313,8 @@ Thêm vào file /etc/vitrage/zabbix_conf.yaml</code>
   - ![us1](image/use-case1-7.png)
 - Cấu hình root-cause-analys:
   - Thêm template &lt;br/&gt;
-Tạo file template /etc/vitrage/templates/usecase-1.yaml</code>
+Tạo file template /etc/vitrage/templates/usecase-1.yaml
+  -</code>
 metadata:
   name: rca application died caused by high mem on instance
   description: rca application died caused by high mem on instance
