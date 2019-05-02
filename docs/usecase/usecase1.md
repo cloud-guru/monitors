@@ -43,12 +43,10 @@ Yêu cầu:
        ![us1](image/use-case1-4.png)
    - Lấy thông tin pid: thêm user parameter: <br/
       Tạo file
-
         ```
         $ cat /etc/zabbix/zabbix_agentd.d/userparameter_application.conf
         UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;
         ```
-
       - Vào tab Configuration > host > [instance09] > item > create item <br>
         với key: appication.pid.[*] thay * bằng tên process muốn monitor
         ![us1](image/use-case1-5.png)
@@ -61,6 +59,7 @@ Yêu cầu:
 - Map các alarm vào đồ thị:
   - Thêm entity app vào đồ thị, vd ta muốn thêm monitor vào 1 app “netcat”
   - Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
+  - 
     ```
     metadata:
       name: list of application run on instance
@@ -80,10 +79,10 @@ Yêu cầu:
           target: app-netcat
           relationship_type: run
     ```
-
     - Quan hệ: host “instance9” “run” “app-netcat”
   - mapping cho alarm của zabbix vào đồ thị: <br/>
     Thêm vào file /etc/vitrage/zabbix_conf.yaml
+  - 
     ```
     - zabbix_host: instance09
       type: nova.instance
@@ -92,13 +91,12 @@ Yêu cầu:
       type: application
       name: app-netcat
     ```
-    
   - Vậy ta đã chuẩn bị xong mô hình input, kết quả: <br/>
   - ![us1](image/use-case1-7.png)
 - Cấu hình root-cause-analys:
   - Thêm template <br/>
     Tạo file template /etc/vitrage/templates/usecase-1.yaml
-
+  -
     ```
     metadata:
       name: rca application died caused by high mem on instance
@@ -147,14 +145,11 @@ Yêu cầu:
                       source: alarm_high_memory_used
                       target: alarm_application_died
     ```
-    
   - Chạy lệnh:
-
     ```
     $ vitrage template validate --type standard --path /etc/vitrage/templates/usecase1.yaml
     $ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml
     ```
-
   - Kết quả sau khi add template:
   - ![us1](image/use-case1-8.png)
 
