@@ -22,10 +22,10 @@ nav:
         - vitrage: tech_detail/vitrage/vitrage-doc/architecture.md
         - mistral: tech_detail/mistral/mistral-doc/readme.md
         - zabbix: tech_detail/zabbix/zabbix-doc/readme.md
-        - aodh: tech_detail/aodh/aodh-doc/readme.md
-        - ceilometer: tech_detail/ceilometer/ceilometer-doc/readme.md
-        - gnocchi: tech_detail/gnocchi/gnocchi-doc/readme.md
+        - telemetry: tech_detail/telemetry/telemetry-doc/readme.md
         - TICK : tech_detail/tick/tick-doc/readme.md
+    - SCENARIO:
+        - usecase-1: usecase/usecase1.md
     - BLUEPRINT:
         - Propose: issue/propose/readme.md
         - Start: issue/start/readme.md
