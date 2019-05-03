@@ -1,7 +1,7 @@
-site_name: auto_scale_heal
-site_url: https://www.mkdocs.org
-site_description: Project documentation with Markdown.
-site_author: MkDocs Team
+site_name: cloud-monitor
+site_url: https://cloud-monitor.github.io/monitors
+site_description: monitor stub, not only cloud 
+site_author: Hoa Ngo
 
 repo_url: https://github.com/cloud-monitor/auto_scaling_auto_healing
 edit_uri: ""
