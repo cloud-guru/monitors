@@ -1,1 +1,3 @@
-# auto_scaling_auto_healing
+# monitor stub 
+## url: https://cloud-monitor.github.io/monitors/
+## hot working: prometheus
