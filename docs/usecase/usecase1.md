@@ -1,18 +1,24 @@
 # Nội dung kịch bản
 
 Đầu vào monitor:
+
 - Memory của VM (qua aodh hoặc zabbix)
 - Application(s) của VM (theo appname)
 
 Kịch bản: xuất hiện các alarm
+
 - Alarm 1: Memory của VM cao: Nếu % Mem của VM > 90%, hoặc % CPU của VM cao > 95% trong vòng 5 phút
-- Alarm 2: Application(s) die:
-  - Nếu app không chạy
-  - Hoặc application ID bị đổi (do có 1 tiến trình trên VM monitor application, nếu application bị tắt thì tiến trình monitor sẽ bật lại => bị đổi PID)
+
+- Alarm 2: Application(s) die: <br/>
+  Nếu app không chạy <br/>
+  Hoặc application ID bị đổi (do có 1 tiến trình trên VM monitor application, nếu application bị tắt thì tiến trình monitor sẽ bật lại => bị đổi PID)
 
 Yêu cầu:
+
 - Collect được alarm khi xảy ra (zabbix hoặc telemetry) đẩy cho vitrage
+
 - Vitrage nhân định Alarm 1 => Alarm 2
+
 - Vitrage gọi đến mitral thực hiện auto scaling (optional)
 
 # Thực hiện
@@ -44,11 +50,11 @@ Yêu cầu:
        ![us1](image/use-case1-4.png)
   - Lấy thông tin pid: thêm user parameter: <br/>
       Tạo file
-
-    ```
-    $ cat /etc/zabbix/zabbix_agentd.d/userparameter_application.conf
-    UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;
-    ```
+        
+    !!! note "/etc/zabbix/zabbix_agentd.d/userparameter_application.conf"
+    
+        UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;
+        
 
       - Vào tab Configuration > host > [instance09] > item > create item <br>
         với key: appication.pid.[*] thay * bằng tên process muốn monitor
@@ -62,8 +68,10 @@ Yêu cầu:
 - Map các alarm vào đồ thị:
   - Thêm entity app vào đồ thị, vd ta muốn thêm monitor vào 1 app “netcat”
   - Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
-  
-    ```
+ 
+!!! note "app-netcat.yaml"
+
+    ```---
     metadata:
       name: list of application run on instance
       description: list of application run on instance
@@ -81,11 +89,13 @@ Yêu cầu:
          target: app-netcat
          relationship_type: run
     ```
-    - Quan hệ: host “instance9” “run” “app-netcat”
+   
   - mapping cho alarm của zabbix vào đồ thị: <br/>
     Thêm vào file /etc/vitrage/zabbix_conf.yaml
 
-    ```
+!!! note "zabbix_conf.yaml"
+  
+    ```---
     - zabbix_host: instance09
       type: nova.instance
       name: eff1daed-0d97-4975-abbd-3d3e907aeedf
@@ -100,7 +110,9 @@ Yêu cầu:
   - Thêm template <br/>
     Tạo file template /etc/vitrage/templates/usecase-1.yaml
 
-    ```
+!!! note "usecase-1.yaml"
+    
+    ```---
     metadata:
       name: rca application died caused by high mem on instance
       description: rca application died caused by high mem on instance
@@ -151,7 +163,7 @@ Yêu cầu:
 
   - Chạy lệnh:
 
-```
+```bat
 $ vitrage template validate --type standard --path /etc/vitrage/templates/usecase1.yaml
 $ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml
 ```

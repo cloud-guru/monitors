@@ -42,3 +42,4 @@ markdown_extensions:
     - toc:
         permalink: True
     - sane_lists
+    - admonition
