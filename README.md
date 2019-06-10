@@ -1,3 +1,3 @@
 # monitor stub 
-## url: https://cloud-monitor.github.io/monitors/
+## url: https://cloud-guru.github.io/monitors/
 ## hot working: prometheus
