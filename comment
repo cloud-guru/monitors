@@ -1,0 +1,16 @@
+https://github.com/influxdata/telegraf/pull/2013
+
+Hi, i'm form team Viettel , which belong to a company have contributed to openstack.
+We plant to monitor our cloud product system by TICK.
+I want to join in writing this plugin, contact with me by email hoanq13@viettel.com.vn.
+I'm have experience in manage openstack, but I'm new in golang and write telegraf plugin too, please guide me what to do of the coding.
+
+Current, i recommend monitor:
+- neutron: floating IP (free, total, unused,) IP pool of another network 
+- openstack agent status.
+In configuration, you should put:
+- RAM, CPU, DISK overcommit ratio . for counting resources remain.
+- Cloudname tag, when data go to infllux we want to know which cloud that metric form.
+- Support https.
+
+Best regards, hope it can run monitor the Product system soon :-)
