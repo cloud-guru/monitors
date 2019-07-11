@@ -2,87 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://cloud-monitor.github.io/monitors/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/issue/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://cloud-monitor.github.io/monitors/issue/need_review/auto_healing/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/tech_detail/vitrage/vitrage-doc/architecture/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/tech_detail/mistral/mistral-doc/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/tech_detail/zabbix/zabbix-doc/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://cloud-monitor.github.io/monitors/tech_detail/telemetry/telemetry-doc/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/tech_detail/tick/tick-doc/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/usecase/usecase1/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/issue/propose/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/issue/start/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/issue/in_process/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/issue/need_review/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/issue/sloved/readme/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/about/release-notes/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/about/contributing/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://cloud-monitor.github.io/monitors/about/license/</loc>
-     <lastmod>2019-05-03</lastmod>
+     <lastmod>2019-07-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
