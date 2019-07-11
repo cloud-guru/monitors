@@ -1,0 +1,43 @@
+metadata:
+    version: 2
+    name: one
+    type: standard
+    description: one
+definitions:
+    entities:
+        - entity:
+            category: ALARM
+            name.regex: (.ens8) down
+            template_id: host_alarm
+        - entity:
+            category: RESOURCE
+            type: host.nic
+            template_id: nic
+        - entity:
+            category: RESOURCE
+            type: nova.host
+            template_id: host
+    relationships:
+        - relationship:
+            source: host_alarm
+            target: host
+            relationship_type: on
+            template_id : alarm_on_host
+
+        - relationship:
+            source: nic
+            target: host
+            relationship_type: attach
+            template_id : nic_attach_host
+
+scenarios:
+    - scenario:
+        condition: alarm_on_host and nic_attach_host
+        actions:
+            - action:
+               action_type : raise_alarm
+               properties:
+                  alarm_name: down
+                  severity: critical
+               action_target:
+                  target: nic

@@ -1,0 +1,66 @@
+instance_live_migrate:
+  input:
+  - instance_id
+  - {notifi_to_email: admin-openstack@yopmail.com}
+  tasks:
+    check_diffrent_host:
+      action: std.noop
+      on-complete:
+      - {send_success_email: <% $.status_before = $.status_after and $.host_before
+          != $.host_after %>}
+      - {send_error_email: <% $.status_before != $.status_after or $.host_before =
+          $.host_after %>}
+    get_instance_status_after:
+      action: nova.servers_get server=<% $.instance_id %>
+      on-complete: check_diffrent_host
+      publish: {host_after: '<% task(get_instance_status_after).result["OS-EXT-SRV-ATTR:host"]
+          %>', status_after: <% task(get_instance_status_after).result.status %>}
+    get_instance_status_before:
+      action: nova.servers_get server=<% $.instance_id %>
+      on-error: send_error_email
+      on-success: live_migrate_instance
+      publish: {host_before: '<% task(get_instance_status_before).result["OS-EXT-SRV-ATTR:host"]
+          %>', instance_name: <% task(get_instance_status_before).result.name %>,
+        status_before: <% task(get_instance_status_before).result.status %>}
+    live_migrate_instance:
+      action: nova.servers_live_migrate
+      input: {block_migration: false, disk_over_commit: false, host: null, server: <%
+          $.instance_id %>}
+      on-error: send_error_email
+      on-success: wait_for_instance_migrate
+      retry: {count: 10, delay: 30}
+    send_error_email:
+      action: std.email
+      input:
+        body: "We try to migrate vm <% $.instance_id %> when host have problem\n Please\
+          \ look at mistral workflow <% execution().id %> for more detail\n"
+        from_addr: ngohoa211@gmail.com
+        smtp_password: 22111996vn
+        smtp_server: smtp.gmail.com
+        subject: ERROR live migrate virtual machine
+        to_addrs: [<% $.notifi_to_email %>]
+    send_success_email:
+      action: std.email
+      input:
+        body: 'We migrate vm <% $.instance_id %> when host have prolem.
+
+          Please look at mistral workflow <% execution().id %> for more detail
+
+          '
+        from_addr: ngohoa211@gmail.com
+        smtp_password: asdf
+        smtp_server: smtp.gmail.com
+        subject: SUCCESS live migrate virtual machine
+        to_addrs: [<% $.notifi_to_email %>]
+    wait_for_instance_migrate:
+      action: nova.servers_get server=<% $.instance_id %>
+      on-success: wait_instance_status_active
+      retry: {continue-on: <% task(wait_for_instance_migrate).result.status !="MIGRATING"
+          %>, count: 30, delay: 2}
+    wait_instance_status_active:
+      action: nova.servers_get server=<% $.instance_id %>
+      on-success: get_instance_status_after
+      retry: {continue-on: <% task(wait_instance_status_active).result.status !="ACTIVE"
+          %>, count: 30, delay: 10}
+  type: direct
+version: '2.0'

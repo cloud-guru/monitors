@@ -1,0 +1,92 @@
+metadata:
+    version: 2
+    name: t
+    type: standard
+    description: t
+definitions:
+    entities:
+        - entity:
+            category: ALARM
+            name: down
+            template_id: nic_alarm
+        - entity:
+            category: RESOURCE
+            type: neutron.network
+            template_id: net
+        - entity:
+            category: RESOURCE
+            type: host.nic
+            template_id: nic
+        - entity:
+            category: RESOURCE
+            type: neutron.port
+            template_id: port
+
+        - entity:
+            category: RESOURCE
+            type: nova.instance
+            template_id: instance
+
+        - entity:
+            category: RESOURCE
+            type: nova.host
+            template_id: host
+
+
+    relationships:
+        - relationship:
+            source: nic_alarm
+            target: nic
+            relationship_type: on
+            template_id : alarm_on_nic
+
+        - relationship:
+            source: nic
+            target: net
+            relationship_type: provide
+            template_id : nic_provide_net
+
+        - relationship:
+            source: net
+            target: port
+            relationship_type: contains 
+            template_id : net_contains_port
+
+        - relationship:
+            source: port
+            target: instance
+            relationship_type: attached 
+            template_id : port_attached_instance
+
+        - relationship:
+            source: host
+            target: instance
+            relationship_type: contains
+            template_id : host_contains_instance
+
+        - relationship:
+            source: nic
+            target: host
+            relationship_type: attach
+            template_id : nic_attach_host
+
+
+scenarios:
+    - scenario:
+        condition: alarm_on_nic and nic_provide_net and net_contains_port and port_attached_instance and host_contains_instance and nic_attach_host
+        actions:
+            - action:
+               action_type : raise_alarm
+               properties:
+                  alarm_name: disconnect
+                  severity: critical
+               action_target:
+                  target: instance
+            - action:
+               action_type : execute_mistral
+               properties:
+                  workflow: instance_live_migrate
+                  input:
+                    instance_id: get_attr(instance, id)
+
+
