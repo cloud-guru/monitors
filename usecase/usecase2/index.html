@@ -8,7 +8,7 @@
   
   <meta name="author" content="Hoa Ngo">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>usecase-1 - cloud-monitor</title>
+  <title>usecase-2 - cloud-monitor</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "usecase-1";
-    var mkdocs_page_input_path = "usecase/usecase1.md";
-    var mkdocs_page_url = "/monitors/usecase/usecase1/";
+    var mkdocs_page_name = "usecase-2";
+    var mkdocs_page_input_path = "usecase/usecase2.md";
+    var mkdocs_page_url = "/monitors/usecase/usecase2/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -93,9 +93,13 @@
 		
     <span class="caption-text">SCENARIO</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../usecase1/">usecase-1</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">usecase-1</a>
+    <a class="current" href="./">usecase-2</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#noi-dung-kich-ban">Nội dung kịch bản</a></li>
@@ -113,10 +117,6 @@
     
 
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usecase2/">usecase-2</a>
                 </li>
     </ul>
 	    </li>
@@ -193,7 +193,7 @@
         
       
     
-    <li>usecase-1</li>
+    <li>usecase-2</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -206,37 +206,64 @@
                 <h1 id="noi-dung-kich-ban">Nội dung kịch bản<a class="headerlink" href="#noi-dung-kich-ban" title="Permanent link">&para;</a></h1>
 <p>Đầu vào monitor:</p>
 <ul>
-<li>Memory của VM (qua aodh hoặc zabbix, tick)</li>
-<li>Application(s) của VM (theo appname)</li>
+<li>Nic của host (qua TICK, prometheus, zabbix,..)</li>
+<li>Kết nối đến máy ảo. (vd ping đến máy đó)</li>
 </ul>
 <p>Kịch bản: xuất hiện các alarm</p>
 <ul>
 <li>
-<p>Alarm 1: Memory của VM cao: Nếu % Mem của VM &gt; 90%, hoặc % CPU của VM cao &gt; 95% trong vòng 5 phút</p>
+<p>Alarm 1: nic host mất kết nối : nic_operstate {host= compute01, interface = ens8}= 0</p>
 </li>
 <li>
-<p>Alarm 2: Application(s) die: <br/>
-  Nếu app không chạy <br/>
-  Hoặc application ID bị đổi (do có 1 tiến trình trên VM monitor application, nếu application bị tắt thì tiến trình monitor sẽ bật lại =&gt; bị đổi PID)</p>
+<p>Alarm 2: Máy ảo mất kết nối (có thể do vitrage tự deduce ra, hoặc monitor tool phát hiện)</p>
 </li>
 </ul>
 <p>Yêu cầu:</p>
 <ul>
 <li>
-<p>Collect được alarm khi xảy ra (zabbix hoặc telemetry) đẩy cho vitrage</p>
+<p>Collect được alarm khi xảy ra</p>
 </li>
 <li>
 <p>Vitrage nhân định Alarm 1 =&gt; Alarm 2</p>
 </li>
 <li>
-<p>Vitrage gọi đến mitral thực hiện auto scaling (optional)</p>
+<p>Vitrage gọi đến mistral thực hiện seft healing</p>
 </li>
 </ul>
 <h1 id="thuc-hien">Thực hiện<a class="headerlink" href="#thuc-hien" title="Permanent link">&para;</a></h1>
 <h2 id="chuan-bi-monitor-cac-thanh-phan">Chuẩn bị monitor các thành phần:<a class="headerlink" href="#chuan-bi-monitor-cac-thanh-phan" title="Permanent link">&para;</a></h2>
-<p>Ở đây cần monitor instance memory và instance application. Lựa chọn zabbix lấy alarm.</p>
+<p>Ở đây cần nic của host. Lựa chọn TICK  lấy alarm.</p>
 <ul>
-<li>Đầu tiên cần cài đặt zabbix agent cho mỗi instance. Các agent này cần gửi thông tin thu thập cho một zabbix server cài trên 1 host, mà host đó vitrage có thể kết nối được</li>
+<li>Đầu tiên cần thiết lập cho telegraf lấy được metric host nic down: ta tạo file</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">/usr/share/telegraf_check_nic.sh</p>
+</div>
+<pre><code>#!/bin/sh
+#nics=`find /sys/class/net ! -type d | xargs --max-args=2 realpath  | awk -F\/ '/pci/{print $NF}'`
+nics=`ip link  | grep &quot;up&quot; | awk -F&quot;: &quot; {'print $2'}  | grep ^e`
+hostname=`hostname`
+for nic in $nics
+do
+  operstate=`cat /sys/class/net/$nic/operstate`
+  if [ &quot;$operstate&quot; = &quot;up&quot; ]
+  then
+     field=1
+  else
+     field=0
+  fi
+  echo &quot;nic,host=${hostname},interface=${nic} operstate=${field}&quot;
+done
+</code></pre>
+
+<p>sửa trong file config của telegraf:</p>
+<div class="admonition note">
+<p class="admonition-title">/etc/telegraf/telegraf.conf</p>
+</div>
+<pre><code>
+</code></pre>
+
+<ul>
 <li>Trên UI của zabbix server, ta cấu hình để monitor memory và application như sau:</li>
 <li>(*) Monitor instance memory: </li>
 <li>Ứng với mỗi instance tạo 1 zabbix host tương ứng<ul>
@@ -397,10 +424,10 @@ $ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.ya
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usecase2/" class="btn btn-neutral float-right" title="usecase-2">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../issue/propose/readme/" class="btn btn-neutral float-right" title="Propose">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../tech_detail/tick/tick-doc/readme/" class="btn btn-neutral" title="TICK"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../usecase1/" class="btn btn-neutral" title="usecase-1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -428,10 +455,10 @@ $ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.ya
           <a href="https://github.com/cloud-monitor/auto_scaling_auto_healing" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../tech_detail/tick/tick-doc/readme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../usecase1/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../usecase2/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../issue/propose/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

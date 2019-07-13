@@ -100,6 +100,10 @@
                     
     <a class="" href="../../usecase/usecase1/">usecase-1</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../usecase/usecase2/">usecase-2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -190,12 +194,13 @@
 <ul>
 <li>Khi máy chủ vật lý gặp sự cố (tắt đột ngột, nic mất kết nối, disk low latency, cpu cao tải,vv…),hệ thống tự động di tản các máy ảo trên máy này sang một nốt khác để user tiếp tục sử dụng được máy ảo bình thường, minh họa như hình dưới</li>
 </ul>
+<p><img alt="exe" src="../images/scenario2.png" /></p>
 <p>Mô tả ca sử dụng:</p>
 <ul>
 <li>User : cung cấp kịch bản cho việc tự động xử lý lỗi, kịch bản bao gồm:</li>
-<li>Mô tả cảnh báo sẽ đến với hệ thống: là cảnh báo của tài nguyên vật lý hay ảo hóa. Đối tượng cụ thể cảnh báo chỉ ra là gì: nốt vật lý nào, card mạng nào, switch nào, hoặc máy ảo nào</li>
-<li>Mô tả hệ thống cách ứng phó , ví dụ: gửi email cho quản trị, tự động thay thế máy ảo, di chuyển máy ảo về khu vực máy vật lý không có lỗi</li>
-<li>Hệ thống: Ghi lại các luật trên, khi có sự kiện cảnh báo xảy đến sẽ thực hiện đúng như mô tả của kịch bản. Chỉ ra được những kịch bản nào đã được áp dụng.</li>
+<li>Mô tả cảnh báo sẽ đến với hệ thống: Thông số nào bất thường, Đối tượng cụ thể cảnh báo chỉ ra là gì: nốt vật lý nào, card mạng nào, switch nào, hoặc máy ảo nào</li>
+<li>Mô tả hệ thống cách ứng phó , ví dụ: tự động thay thế máy ảo, di chuyển máy ảo về khu vực máy vật lý không có lỗi, gửi email cho quản trị, </li>
+<li>Hệ thống: Ghi lại các luật trên, khi có cảnh báo như đã mô tả xảy đến sẽ tự động thực hiện ứng phó như của kịch bản. Chỉ ra được những kịch bản nào đã được áp dụng. Nguồn gốc của cảnh báo.</li>
 </ul>
               
             </div>
