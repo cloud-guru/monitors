@@ -109,6 +109,8 @@
         
             <li><a class="toctree-l4" href="#cau-hinh-vitrage">Cấu hình vitrage</a></li>
         
+            <li><a class="toctree-l4" href="#ket-qua">Kết quả</a></li>
+        
         </ul>
     
 
@@ -386,10 +388,11 @@ scenarios:
 $ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml
 </code></pre>
 
-<ul>
-<li>Kết quả sau khi add template:</li>
-<li><img alt="us1" src="../image/use-case1-8.png" /></li>
-</ul>
+<h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">&para;</a></h2>
+<p>vitrage chỉ ra được alarm nào liên quan đến alarm nào</p>
+<p><img alt="us1" src="../image/use-case1-8.png" /></p>
+<p>Ý nghĩa: khi gặp sự cố liên quan đến host, không chỉ 1 mà rất nhiều alarm liên đới cùng đổ về phía quản trị, quản trị có thể nhờ vitrage mà lần ra được nguồn gốc vấn đề.</p>
+<p>Phát triển thêm: vitrage sẽ gọi mistral . mistral chạy workflow gọi ra heat auto-scale-sig.</p>
               
             </div>
           </div>
