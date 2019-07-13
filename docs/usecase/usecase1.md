@@ -167,9 +167,15 @@ Yêu cầu:
 $ vitrage template validate --type standard --path /etc/vitrage/templates/usecase1.yaml
 $ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml
 ```
+## Kết quả
+vitrage chỉ ra được alarm nào liên quan đến alarm nào
 
-  - Kết quả sau khi add template:
-  - ![us1](image/use-case1-8.png)
+![us1](image/use-case1-8.png)
+ 
+Ý nghĩa: khi gặp sự cố liên quan đến host, không chỉ 1 mà rất nhiều alarm liên đới cùng đổ về phía quản trị, quản trị có thể nhờ vitrage mà lần ra được nguồn gốc vấn đề.
+
+Phát triển thêm: vitrage sẽ gọi mistral . mistral chạy workflow gọi ra heat auto-scale-sig.
+
 
        
 

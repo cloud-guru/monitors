@@ -2,9 +2,7 @@
     
     Index.md                                        # The documentation index.
     INTRODUCTION /                                  # 
-        Issue Describe                              # The Problems, goal, plant sub task, subtask of project 
-    TECNICAL SOLUTION /                             # 
-        ...                                         # Solution describe for each subtask, compare betwent solutions
+        Issue Describe                              # The Problems, goal, plant sub task, subtask of project
     TECHNOLOGY DETAIL /                             #
         ...                                         # Research and development tool
     SCENARIO /                                      # Scenario and configuation guilde

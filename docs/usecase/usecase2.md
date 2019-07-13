@@ -49,154 +49,330 @@ sửa trong file config của telegraf:
 
 !!! note "/etc/telegraf/telegraf.conf"
 ```
-
+[[inputs.exec]]
+  ## Commands array
+  commands = [
+    "/usr/share/telegraf_check_nic.sh",
+  ]
+  timeout = "5s"
+  data_format = "influx"
 ```
 
-- Trên UI của zabbix server, ta cấu hình để monitor memory và application như sau:
-- (*) Monitor instance memory: 
-  - Ứng với mỗi instance tạo 1 zabbix host tương ứng
-    - Hostname: tên instance.
-    - Agent interface: interface của instance, kết nối zabbix server và agent
-    - ![us1](image/use-case1-1.png)
-  - Tạo item để thu thập thông tin memory của instance
-    - Vào tab Configuration > host > [instance09] > item > create item 
-      - Key: vm.memory.size(pushed) <br/>
-       (Key này mang ý nghĩa:   % (active + wired) / total memory) <br/>
-       Tham khảo tại: https://www.zabbix.com/documentation/3.2/manual/appendix/items/vm.memory.size_params
-      - ![us1](image/use-case1-2.png)
-  - Tạo trigger cảnh báo : khi mem dùng của instance vượt quá 90% thì bắn alarm
-    - Vào tab: Configuration > host > [instance09] > Triggers > create trigger
-    - ![us1](image/use-case1-3.png)
-    - Ở đây avg(50s) tức nó sẽ xem xét giá trị trung bình trong khoảng 50s. Nếu cần trong 5 phút giá trị này cần đặt 1500
-- (*)Monitor instance application:
-  - Ta nhận biết application chết bằng cách kiểm tra có sự thay đổi pid không.
-  - Tạo host: ứng với mỗi application tạo 1 zabbix host: <br/>
-       Giả sử app ta muốn monitor là netcat <br/>
-       ![us1](image/use-case1-4.png)
-  - Lấy thông tin pid: thêm user parameter: <br/>
-      Tạo file
-        
-    !!! note "/etc/zabbix/zabbix_agentd.d/userparameter_application.conf"
-    
-        UserParameter=application.pid[*],if [ "$(pidof $1)" = "" ]; then echo "-1"; else echo $(pidof $1); fi;
-        
+Như vậy , telegraf sẽ liên tục gửi về cho influxdb metric định dạng:
 
-      - Vào tab Configuration > host > [instance09] > item > create item <br>
-        với key: appication.pid.[*] thay * bằng tên process muốn monitor
-        ![us1](image/use-case1-5.png)
-  - Tạo trigger cảnh báo : khi app không chạy hoặc application pid bị đổi thì bắn alarm <br/>
-     - application.pid [*] = -1 
-     - OR application.pid [*].max(7d) <> application.pid [*].min(7d)
-     - ![us1](image/use-case1-6.png)
+  - nic,host=compute01,interface=ens8 operstate= 0 nếu nic ens8 down
+  - nic,host=compute01,interface=ens8 operstate= 1 nếu nic ens8 up
+
+- Tiếp theo cần thiết lập cảnh báo kapacitor:
+Tạo 1 tick script:
+
+!!! note "/etc/kapacitor/tick_script_nicdown.txt"
+```
+dbrp "telegraf"."autogen"
+var db = 'telegraf'
+var rp = 'autogen'
+var measurement = 'nic'
+var groupBy = ['host', 'interface']
+var whereFilter = lambda: TRUE
+var name = 'nic down'
+var idVar = name + '-{{.Group}}'
+var message = ' {{ index .Tags "interface" }} down'
+var idTag = 'alertID'
+var levelTag = 'level'
+var messageField = 'message'
+var durationField = 'duration'
+var outputMeasurement = 'alerts'
+var triggerType = 'threshold'
+var crit = 1
+var data = stream
+    |from()
+        .database(db)
+        .retentionPolicy(rp)
+        .measurement(measurement)
+        .groupBy(groupBy)
+        .where(whereFilter)
+    |eval(lambda: "operstate")
+        .as('value')
+var trigger = data
+    |alert()
+        .crit(lambda: "value" < crit)
+        .message(message)
+        .id(idVar)
+        .idTag(idTag)
+        .levelTag(levelTag)
+        .messageField(messageField)
+        .durationField(durationField)
+        .stateChangesOnly()
+        .exec('/usr/bin/python', '/etc/kapacitor/kapacitor_vitrage.py', 'rabbit://openstack:Welcome123@192.168.77.51')
+trigger
+    |httpOut('output')
+```
+
+Import tick_script trên cho kapacitor:
+
+```
+kapacitor define check_nic_down -tick /etc/kapacitor/tick_script_nicdown.txt
+kapacitor endnable check_nic_down
+```
+
+- Thực hiện cấu hình cho kapacitor trả về alarm được cho vitrage: https://docs.openstack.org/vitrage/latest/contributor/kapacitor-datasource.html
+- Kết quả sau khi đặt monitor nic xong: thử ip link down ens8:
+     - ![b12](image/usecase2_2.png)
+     
 
 ## Cấu hình vitrage
-- Map các alarm vào đồ thị:
-  - Thêm entity app vào đồ thị, vd ta muốn thêm monitor vào 1 app “netcat”
-  - Tạo file /etc/vitrage/static_datasources/app-netcat.yaml nội dung:
+- Thêm kịch bản để khi có alarm nic của host down sẽ xác định cho host nào bị ảnh hưởng.
  
-!!! note "app-netcat.yaml"
+!!! note "scenario2-1.yaml"
+```
+metadata:
+    version: 2
+    name: kapacitor host nic alarm to nic alarm
+    type: standard
+    description: kapacitor host nic alarm to nic alarm
+definitions:
+    entities:
+        - entity:
+            category: ALARM
+            name.regex: (.ens8) down
+            template_id: host_alarm
+        - entity:
+            category: RESOURCE
+            type: host.nic
+            template_id: nic
+        - entity:
+            category: RESOURCE
+            type: nova.host
+            template_id: host
+    relationships:
+        - relationship:
+            source: host_alarm
+            target: host
+            relationship_type: on
+            template_id : alarm_on_host
 
-    ```---
-    metadata:
-      name: list of application run on instance
-      description: list of application run on instance
-    definitions:
-      entities:
-       - static_id: app-netcat
-         type: application
-         id: app-netcat
-         state: available
-       - static_id: instance9
-         type: nova.instance
-         id: eff1daed-0d97-4975-abbd-3d3e907aeedf
-      relationships:
-       - source: instance9
-         target: app-netcat
-         relationship_type: run
-    ```
-   
-  - mapping cho alarm của zabbix vào đồ thị: <br/>
-    Thêm vào file /etc/vitrage/zabbix_conf.yaml
+        - relationship:
+            source: nic
+            target: host
+            relationship_type: attach
+            template_id : nic_attach_host
 
-!!! note "zabbix_conf.yaml"
-  
-    ```---
-    - zabbix_host: instance09
-      type: nova.instance
-      name: eff1daed-0d97-4975-abbd-3d3e907aeedf
-    - zabbix_host: app-netcat
-      type: application
-      name: app-netcat
-    ```
-
-  - Vậy ta đã chuẩn bị xong mô hình input, kết quả: <br/>
-  - ![us1](image/use-case1-7.png)
-  - Cấu hình root-cause-analys:
-  - Thêm template <br/>
-    Tạo file template /etc/vitrage/templates/usecase-1.yaml
-
-!!! note "usecase-1.yaml"
-    
-    ```---
-    metadata:
-      name: rca application died caused by high mem on instance
-      description: rca application died caused by high mem on instance
-    definitions:
-      entities:
-          - entity:
-              template_id: alarm_high_memory_used
-              category: ALARM
-              name: instance high memory usage
-          - entity:
-              template_id: alarm_application_died
-              category: ALARM
-              name: application died
-          - entity:
-              template_id: instance
-              category: RESOURCE
-              type: nova.instance
-          - entity:
-              template_id: application
-              category: RESOURCE
-              type: application
-      relationships:
-          - relationship:
-              template_id : alarm_high_memory_on_instance
-              source: alarm_high_memory_used
-              target: instance
-              relationship_type: on
-          - relationship:
-              template_id : alarm_application_died_on_applicaion
-              source: alarm_application_died
-              target: application
-              relationship_type: on
-          - relationship:
-              template_id : instance_run_application
-              source: instance
-              target: application
-              relationship_type: run
-    scenarios:
-        - scenario:
-            condition: alarm_high_memory_on_instance and alarm_application_died_on_applicaion and instance_run_application
-            actions:
-                - action:
-                    action_type : add_causal_relationship
-                    action_target:
-                      source: alarm_high_memory_used
-                      target: alarm_application_died
-    ```
-
-  - Chạy lệnh:
-
-```bat
-$ vitrage template validate --type standard --path /etc/vitrage/templates/usecase1.yaml
-$ vitrage template add --type standard --path /etc/vitrage/templates/usecase1.yaml
+scenarios:
+    - scenario:
+        condition: alarm_on_host and nic_attach_host
+        actions:
+            - action:
+               action_type : raise_alarm
+               properties:
+                  alarm_name: down
+                  severity: critical
+               action_target:
+                  target: nic
 ```
 
-  - Kết quả sau khi add template:
-  - ![us1](image/use-case1-8.png)
+!!! note "scenario2-2.yaml"
+```
+metadata:
+    version: 2
+    name: nic down scenario 
+    type: standard
+    description: nic down scenario 
+definitions:
+    entities:
+        - entity:
+            category: ALARM
+            name: down
+            template_id: nic_alarm
+        - entity:
+            category: RESOURCE
+            type: neutron.network
+            template_id: net
+        - entity:
+            category: RESOURCE
+            type: host.nic
+            template_id: nic
+        - entity:
+            category: RESOURCE
+            type: neutron.port
+            template_id: port
 
-       
+        - entity:
+            category: RESOURCE
+            type: nova.instance
+            template_id: instance
+
+        - entity:
+            category: RESOURCE
+            type: nova.host
+            template_id: host
+
+        - entity:
+            category: ALARM
+            name: disconnect
+            template_id: instance_alarm
+
+
+    relationships:
+        - relationship:
+            source: nic_alarm
+            target: nic
+            relationship_type: on
+            template_id : alarm_on_nic
+
+        - relationship:
+            source: nic
+            target: net
+            relationship_type: provide
+            template_id : nic_provide_net
+
+        - relationship:
+            source: net
+            target: port
+            relationship_type: contains 
+            template_id : net_contains_port
+
+        - relationship:
+            source: port
+            target: instance
+            relationship_type: attached 
+            template_id : port_attached_instance
+
+        - relationship:
+            source: host
+            target: instance
+            relationship_type: contains
+            template_id : host_contains_instance
+
+        - relationship:
+            source: nic
+            target: host
+            relationship_type: attach
+            template_id : nic_attach_host
+
+        - relationship:
+            source: instance_alarm
+            target: instance
+            relationship_type: on
+            template_id : alarm_on_instance
+
+
+
+scenarios:
+    - scenario:
+        condition: alarm_on_nic and nic_provide_net and net_contains_port and port_attached_instance and host_contains_instance and nic_attach_host
+        actions:
+            - action:
+               action_type : raise_alarm
+               properties:
+                  alarm_name: disconnect
+                  severity: critical
+               action_target:
+                  target: instance
+            - action:
+               action_type : execute_mistral
+               properties:
+                  workflow: instance_live_migrate
+                  input:
+                    instance_id: get_attr(instance, id)
+    - scenario:
+        condition: alarm_on_nic and host_contains_instance and nic_attach_host and alarm_on_instance
+        actions:
+            - action:
+               action_type : add_causal_relationship
+               action_target:
+                  source: nic_alarm
+                  target: instance_alarm
+               
+```
+
+- Chạy lệnh:
+
+```bash
+$ vitrage template validate --type standard --path /etc/vitrage/templates/scenario2-1.yaml
+$ vitrage template add --type standard --path /etc/vitrage/templates/scenario2-1.yaml
+$ vitrage template validate --type standard --path /etc/vitrage/templates/scenario2-2.yaml
+$ vitrage template add --type standard --path /etc/vitrage/templates/scenario2-2.yaml
+```
+## Cấu hình mistral
+
+Thêm workflow instance_live_migrate sau:
+
+!!! note "workflow_live_migrate.yaml"
+```
+version: '2.0'
+instance_live_migrate:
+ type: direct
+ input:
+   - instance_id
+   - notifi_to_email: admin-openstack@yopmail.com
+ tasks:
+   get_instance_status_before:
+     action: nova.servers_get server=<% $.instance_id %>
+     publish:
+       instance_name: <% task(get_instance_status_before).result.name %>
+       status_before: <% task(get_instance_status_before).result.status %>
+       host_before: <% task(get_instance_status_before).result["OS-EXT-SRV-ATTR:host"] %>
+     on-success: live_migrate_instance
+     on-error: send_error_email
+
+   live_migrate_instance:
+      action: nova.servers_live_migrate
+      input:
+        server: <% $.instance_id %>
+        block_migration: False
+        disk_over_commit: False
+        host:
+      retry:
+        count: 10
+        delay: 30
+      on-success: wait_for_instance_migrate
+      on-error: send_error_email
+
+   wait_for_instance_migrate:
+     action: nova.servers_get server=<% $.instance_id %>
+     retry:
+       count: 30
+       delay: 2
+       continue-on: <% task(wait_for_instance_migrate).result.status !="MIGRATING" %>
+     on-success: wait_instance_status_active
+
+   wait_instance_status_active:
+     action: nova.servers_get server=<% $.instance_id %>
+     retry:
+       delay: 10
+       count: 30
+       continue-on: <% task(wait_instance_status_active).result.status !="ACTIVE" %>
+     on-success: get_instance_status_after
+
+   get_instance_status_after:
+     action: nova.servers_get server=<% $.instance_id %>
+     publish:
+       status_after: <% task(get_instance_status_after).result.status %>
+       host_after: <% task(get_instance_status_after).result["OS-EXT-SRV-ATTR:host"] %>
+     on-complete: check_diffrent_host
+   check_diffrent_host:
+     action: std.noop
+     on-complete:
+       - send_error_email: <% $.status_before != $.status_after or $.host_before = $.host_after %>
+
+   send_error_email:
+     action: std.email
+     input:
+       to_addrs: [<% $.notifi_to_email %>]
+       subject: ERROR live migrate virtual machine
+       body: |
+        We try to migrate vm <% $.instance_id %> when host have problem
+         Please look at mistral workflow <% execution().id %> for more detail
+       from_addr: ngohoa211@gmail.com
+       smtp_server: smtp.gmail.com
+       smtp_password: secret
+```
+
+## Kết quả 
+- Khi tắt card mạng, đầu tiên, sẽ có vitrage deduce alarm trên máy báo hiệu máy ảo mất kết nối
+![us1](image/usecase2_4.png)
+- Sau đó, hệ thống tự động chuyển máy ảo sang host khác
+- ![us17](image/usecase2_5.png)
 
 
 
