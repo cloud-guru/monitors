@@ -2,31 +2,56 @@
 
 Đầu vào monitor:
 
-- Memory của VM (qua aodh hoặc zabbix, tick)
-- Application(s) của VM (theo appname)
+- Nic của host (qua TICK, prometheus, zabbix,..)
+- Kết nối đến máy ảo. (vd ping đến máy đó)
 
 Kịch bản: xuất hiện các alarm
 
-- Alarm 1: Memory của VM cao: Nếu % Mem của VM > 90%, hoặc % CPU của VM cao > 95% trong vòng 5 phút
+- Alarm 1: nic host mất kết nối : nic_operstate {host= compute01, interface = ens8}= 0
 
-- Alarm 2: Application(s) die: <br/>
-  Nếu app không chạy <br/>
-  Hoặc application ID bị đổi (do có 1 tiến trình trên VM monitor application, nếu application bị tắt thì tiến trình monitor sẽ bật lại => bị đổi PID)
+- Alarm 2: Máy ảo mất kết nối (có thể do vitrage tự deduce ra, hoặc monitor tool phát hiện)
 
 Yêu cầu:
 
-- Collect được alarm khi xảy ra (zabbix hoặc telemetry) đẩy cho vitrage
+- Collect được alarm khi xảy ra
 
 - Vitrage nhân định Alarm 1 => Alarm 2
 
-- Vitrage gọi đến mitral thực hiện auto scaling (optional)
+- Vitrage gọi đến mistral thực hiện seft healing
 
 # Thực hiện
 ## Chuẩn bị monitor các thành phần:
 
-Ở đây cần monitor instance memory và instance application. Lựa chọn zabbix lấy alarm.
+Ở đây cần nic của host. Lựa chọn TICK  lấy alarm.
 
-- Đầu tiên cần cài đặt zabbix agent cho mỗi instance. Các agent này cần gửi thông tin thu thập cho một zabbix server cài trên 1 host, mà host đó vitrage có thể kết nối được
+- Đầu tiên cần thiết lập cho telegraf lấy được metric host nic down: ta tạo file
+
+!!! note "/usr/share/telegraf_check_nic.sh"
+```
+#!/bin/sh
+#nics=`find /sys/class/net ! -type d | xargs --max-args=2 realpath  | awk -F\/ '/pci/{print $NF}'`
+nics=`ip link  | grep "up" | awk -F": " {'print $2'}  | grep ^e`
+hostname=`hostname`
+for nic in $nics
+do
+  operstate=`cat /sys/class/net/$nic/operstate`
+  if [ "$operstate" = "up" ]
+  then
+     field=1
+  else
+     field=0
+  fi
+  echo "nic,host=${hostname},interface=${nic} operstate=${field}"
+done
+```
+
+sửa trong file config của telegraf:
+
+!!! note "/etc/telegraf/telegraf.conf"
+```
+
+```
+
 - Trên UI của zabbix server, ta cấu hình để monitor memory và application như sau:
 - (*) Monitor instance memory: 
   - Ứng với mỗi instance tạo 1 zabbix host tương ứng

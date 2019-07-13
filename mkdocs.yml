@@ -23,6 +23,7 @@ nav:
         - TICK : tech_detail/tick/tick-doc/readme.md
     - SCENARIO:
         - usecase-1: usecase/usecase1.md
+        - usecase-2: usecase/usecase2.md
     - BLUEPRINT:
         - Propose: issue/propose/readme.md
         - Start: issue/start/readme.md
