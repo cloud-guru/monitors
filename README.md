@@ -12,3 +12,6 @@ https://docs.openstack.org/developer/performance-docs/methodologies/monitoring/i
 https://www.w3cschool.cn/doc_influxdata/dict
 
 ## cold working: collectd, qdr, prometheus
+
+## grafana 
+https://www.youtube.com/embed/adNVWly9sCU?rel=0&modestbranding=1
